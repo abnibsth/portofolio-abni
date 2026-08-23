@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img">
+  <title>Wireframe placeholder: dashboard dengan grafik tren dan tabel peringkat</title>
+  <rect width="1600" height="1000" fill="#f0efea"/>
+  <g stroke="#dedcd4" stroke-width="2">
+    <path d="M0 120h1600"/>
+    <path d="M280 120v880"/>
+  </g>
+  <rect x="80" y="52" width="150" height="20" rx="10" fill="#0b0b0b"/>
+  <g fill="#dedcd4">
+    <rect x="60" y="184" width="160" height="14" rx="7"/>
+    <rect x="60" y="232" width="130" height="14" rx="7"/>
+    <rect x="60" y="280" width="170" height="14" rx="7"/>
+    <rect x="60" y="328" width="110" height="14" rx="7"/>
+  </g>
+  <rect x="40" y="168" width="4" height="46" fill="#0b0b0b"/>
+  <g>
+    <rect x="340" y="176" width="1180" height="320" fill="#ffffff" stroke="#dedcd4" stroke-width="2"/>
+    <polyline points="400,430 560,360 720,392 880,286 1040,318 1200,224 1360,262 1460,200"
+      fill="none" stroke="#0b0b0b" stroke-width="4" stroke-linejoin="round"/>
+    <g stroke="#dedcd4" stroke-width="2">
+      <path d="M340 430h1180"/>
+      <path d="M340 350h1180"/>
+      <path d="M340 270h1180"/>
+    </g>
+    <circle cx="1460" cy="200" r="10" fill="#0b0b0b"/>
+  </g>
+  <g>
+    <rect x="340" y="552" width="380" height="160" fill="#0b0b0b"/>
+    <rect x="376" y="588" width="120" height="14" rx="7" fill="#faf9f6" opacity="0.5"/>
+    <rect x="376" y="628" width="220" height="44" rx="8" fill="#faf9f6"/>
+  </g>
+  <g>
+    <rect x="740" y="552" width="380" height="160" fill="#ffffff" stroke="#dedcd4" stroke-width="2"/>
+    <rect x="776" y="588" width="110" height="14" rx="7" fill="#c4c1b6"/>
+    <rect x="776" y="628" width="190" height="44" rx="8" fill="#dedcd4"/>
+  </g>
+  <g>
+    <rect x="1140" y="552" width="380" height="160" fill="#ffffff" stroke="#dedcd4" stroke-width="2"/>
+    <rect x="1176" y="588" width="130" height="14" rx="7" fill="#c4c1b6"/>
+    <rect x="1176" y="628" width="160" height="44" rx="8" fill="#dedcd4"/>
+  </g>
+  <g stroke="#dedcd4" stroke-width="2">
+    <path d="M340 780h1180"/>
+    <path d="M340 860h1180"/>
+    <path d="M340 940h1180"/>
+  </g>
+  <g fill="#c4c1b6">
+    <rect x="340" y="812" width="420" height="16" rx="8"/>
+    <rect x="340" y="892" width="340" height="16" rx="8"/>
+  </g>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img">
+  <title>Wireframe placeholder: layar transaksi dua kolom</title>
+  <rect width="1600" height="1000" fill="#f0efea"/>
+  <g stroke="#dedcd4" stroke-width="2">
+    <path d="M0 120h1600"/>
+    <path d="M980 120v880"/>
+  </g>
+  <rect x="80" y="52" width="180" height="20" rx="10" fill="#0b0b0b"/>
+  <g fill="#dedcd4">
+    <rect x="1300" y="46" width="90" height="32" rx="16"/>
+    <rect x="1410" y="46" width="110" height="32" rx="16"/>
+  </g>
+  <g>
+    <rect x="80" y="184" width="820" height="120" fill="#ffffff" stroke="#dedcd4" stroke-width="2"/>
+    <rect x="112" y="216" width="56" height="56" fill="#0b0b0b"/>
+    <rect x="196" y="222" width="300" height="18" rx="9" fill="#c4c1b6"/>
+    <rect x="196" y="256" width="180" height="14" rx="7" fill="#dedcd4"/>
+    <rect x="800" y="228" width="68" height="32" rx="16" fill="#0b0b0b"/>
+  </g>
+  <g>
+    <rect x="80" y="336" width="820" height="120" fill="#ffffff" stroke="#dedcd4" stroke-width="2"/>
+    <rect x="112" y="368" width="56" height="56" fill="#c4c1b6"/>
+    <rect x="196" y="374" width="240" height="18" rx="9" fill="#c4c1b6"/>
+    <rect x="196" y="408" width="150" height="14" rx="7" fill="#dedcd4"/>
+    <rect x="800" y="380" width="68" height="32" rx="16" fill="#dedcd4"/>
+  </g>
+  <g>
+    <rect x="80" y="488" width="820" height="120" fill="#ffffff" stroke="#dedcd4" stroke-width="2"/>
+    <rect x="112" y="520" width="56" height="56" fill="#c4c1b6"/>
+    <rect x="196" y="526" width="330" height="18" rx="9" fill="#c4c1b6"/>
+    <rect x="196" y="560" width="200" height="14" rx="7" fill="#dedcd4"/>
+    <rect x="800" y="532" width="68" height="32" rx="16" fill="#dedcd4"/>
+  </g>
+  <g>
+    <rect x="80" y="640" width="820" height="120" fill="#ffffff" stroke="#dedcd4" stroke-width="2"/>
+    <rect x="112" y="672" width="56" height="56" fill="#c4c1b6"/>
+    <rect x="196" y="678" width="270" height="18" rx="9" fill="#c4c1b6"/>
+    <rect x="196" y="712" width="170" height="14" rx="7" fill="#dedcd4"/>
+    <rect x="800" y="684" width="68" height="32" rx="16" fill="#dedcd4"/>
+  </g>
+  <g>
+    <rect x="1060" y="184" width="460" height="240" fill="#0b0b0b"/>
+    <rect x="1096" y="220" width="140" height="16" rx="8" fill="#faf9f6" opacity="0.5"/>
+    <rect x="1096" y="268" width="300" height="44" rx="8" fill="#faf9f6"/>
+    <rect x="1096" y="344" width="200" height="16" rx="8" fill="#faf9f6" opacity="0.35"/>
+  </g>
+  <g fill="#dedcd4">
+    <rect x="1060" y="472" width="460" height="14" rx="7"/>
+    <rect x="1060" y="512" width="380" height="14" rx="7"/>
+    <rect x="1060" y="552" width="420" height="14" rx="7"/>
+  </g>
+  <rect x="1060" y="640" width="460" height="72" rx="36" fill="#0b0b0b"/>
+  <circle cx="1290" cy="840" r="72" fill="none" stroke="#c4c1b6" stroke-width="2"/>
+</svg>

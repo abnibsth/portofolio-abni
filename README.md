@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website
 
-## Getting Started
+Portfolio pribadi dengan pendekatan **editorial monokrom**, dibangun sesuai
+[`prd.md`](prd.md).
 
-First, run the development server:
+**Stack:** Next.js 16 (App Router, Cache Components) · TypeScript · Tailwind CSS v4
+
+---
+
+## Mulai
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Langkah pertama
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit **[`data/site.ts`](data/site.ts)** — semua identitas, kontak, dan SEO ada di
+satu file itu. Cari komentar bertanda `[GANTI]`.
 
-## Learn More
+## Dokumentasi lengkap
 
-To learn more about Next.js, take a look at the following resources:
+Semua panduan ada di **[DOCS.md](DOCS.md)**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Cara mengisi data pribadi, project, pengalaman, dan keahlian
+- Cara menambah project baru
+- Setup token GitHub dan cara kerja fallback-nya
+- Cara deploy ke Vercel
+- Checklist sebelum launch
+- Troubleshooting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Perintah
 
-## Deploy on Vercel
+| Perintah            | Fungsi                       |
+| ------------------- | ---------------------------- |
+| `npm run dev`       | Development server           |
+| `npm run build`     | Production build             |
+| `npm start`         | Menjalankan hasil build      |
+| `npm run typecheck` | Cek error TypeScript         |
+| `npm run lint`      | ESLint                       |
+| `npm run format`    | Rapikan format dengan Prettier |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Fitur
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Homepage single-page: hero, karya pilihan, tentang, keahlian, pengalaman,
+  aktivitas GitHub, kontak
+- Halaman studi kasus per project (`/projects/[slug]`)
+- Integrasi GitHub API di sisi server, dengan caching 1 jam dan fallback data
+  lokal saat API gagal
+- SEO: metadata per halaman, canonical URL, Open Graph image otomatis,
+  JSON-LD Person & CreativeWork, sitemap, robots
+- Aksesibilitas: skip link, navigasi keyboard penuh, menu mobile berbasis
+  `<dialog>` native, `prefers-reduced-motion`
+- Vercel Analytics dengan daftar event bertipe
+
+## Catatan arsitektur
+
+- **Konten** ada di `data/`. **Tampilan** ada di `components/` dan `app/globals.css`.
+- Semua komponen adalah Server Component kecuali tiga: menu mobile, pelacak
+  analytics, dan link yang mengirim event.
+- `lib/github.ts` ditandai `server-only`, jadi `GITHUB_TOKEN` tidak mungkin bocor
+  ke bundle browser — build akan gagal kalau ada client component yang
+  mengimpornya.
+
+Penjelasan lengkap tiap keputusan teknis ada di
+[DOCS.md § Keputusan Teknis](DOCS.md#10-keputusan-teknis--alasannya).

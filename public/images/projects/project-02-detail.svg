@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img">
+  <title>Wireframe placeholder: tabel prioritas dengan indikator tren per baris</title>
+  <rect width="1600" height="1000" fill="#f0efea"/>
+  <path d="M0 120h1600" stroke="#dedcd4" stroke-width="2"/>
+  <rect x="80" y="52" width="260" height="20" rx="10" fill="#0b0b0b"/>
+  <rect x="80" y="176" width="1440" height="72" fill="#0b0b0b"/>
+  <g fill="#faf9f6" opacity="0.6">
+    <rect x="120" y="204" width="200" height="16" rx="8"/>
+    <rect x="700" y="204" width="120" height="16" rx="8"/>
+    <rect x="1000" y="204" width="120" height="16" rx="8"/>
+    <rect x="1320" y="204" width="120" height="16" rx="8"/>
+  </g>
+  <g stroke="#dedcd4" stroke-width="2">
+    <path d="M80 336h1440"/>
+    <path d="M80 456h1440"/>
+    <path d="M80 576h1440"/>
+    <path d="M80 696h1440"/>
+    <path d="M80 816h1440"/>
+    <path d="M80 936h1440"/>
+  </g>
+  <g fill="#c4c1b6">
+    <rect x="120" y="380" width="420" height="18" rx="9"/>
+    <rect x="120" y="500" width="360" height="18" rx="9"/>
+    <rect x="120" y="620" width="470" height="18" rx="9"/>
+    <rect x="120" y="740" width="330" height="18" rx="9"/>
+    <rect x="120" y="860" width="400" height="18" rx="9"/>
+  </g>
+  <g fill="#dedcd4">
+    <rect x="700" y="380" width="110" height="18" rx="9"/>
+    <rect x="700" y="500" width="90" height="18" rx="9"/>
+    <rect x="700" y="620" width="120" height="18" rx="9"/>
+    <rect x="700" y="740" width="80" height="18" rx="9"/>
+    <rect x="700" y="860" width="100" height="18" rx="9"/>
+  </g>
+  <g stroke="#0b0b0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M1330 400l30-32 30 32"/>
+    <path d="M1330 508l30 32 30-32"/>
+    <path d="M1330 628l30-32 30 32"/>
+    <path d="M1330 748l30-32 30 32"/>
+    <path d="M1330 868l30 32 30-32"/>
+  </g>
+</svg>
