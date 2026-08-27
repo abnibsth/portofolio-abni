@@ -16,7 +16,7 @@ import { TrackedLink } from "./tracked-link";
 export function ResumeButton({
   variant = "secondary",
   className,
-  label = "Unduh CV",
+  label = "View Resume",
 }: {
   variant?: ButtonVariant;
   className?: string;
@@ -29,7 +29,8 @@ export function ResumeButton({
       href={site.resume.path}
       event="download_resume"
       external
-      download={site.resume.downloadName}
+      target="_blank"
+      rel="noopener noreferrer"
       className={buttonStyles(variant, className)}
     >
       {label}

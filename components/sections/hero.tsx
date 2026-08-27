@@ -1,22 +1,23 @@
 import Image from "next/image";
 import { buttonStyles, ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { ArrowDown, ArrowUpRight, GitHubMark } from "@/components/ui/icons";
+import { ArrowDown, ArrowUpRight, GitHubMark, MailIcon, VerifiedBadge } from "@/components/ui/icons";
+import { Magnetic } from "@/components/ui/magnetic";
+import { PixelAvatar } from "@/components/ui/pixel-avatar";
 import { ResumeButton } from "@/components/ui/resume-button";
 import { TrackedLink } from "@/components/ui/tracked-link";
 import { site } from "@/data/site";
+import { ensureKnightImage } from "@/lib/knight-image";
 
 /**
  * Hero (PRD 10.1).
  *
  * Nama dan role sengaja diletakkan di elemen paling atas dan berukuran paling
- * besar, karena satu-satunya tugas hero adalah menjawab "siapa ini dan apa
- * posisinya" sebelum recruiter melakukan scroll.
- *
- * Tidak ada animasi yang menunda tampilnya teks: seluruh isi hero ada di HTML
- * awal dan terbaca walaupun CSS animasi tidak berjalan.
+ * besar, karena satu-satunya tugas hero meyakinkan pengunjung sebelum scroll.
  */
 export function Hero() {
+  ensureKnightImage();
+
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden">
       <Container>
@@ -39,7 +40,7 @@ export function Hero() {
                 />
                 {site.availability.available
                   ? site.availability.label
-                  : "Sedang tidak mencari peluang"}
+                  : "Not currently looking for opportunities"}
               </span>
             </div>
 
@@ -47,7 +48,10 @@ export function Hero() {
               id="hero-heading"
               className="mt-8 text-[clamp(2.75rem,9vw,6.5rem)] leading-[0.98]"
             >
-              {site.name}
+              <span className="inline-flex items-center gap-2.5 sm:gap-3">
+                <span>{site.name}</span>
+                <VerifiedBadge className="h-[0.65em] w-[0.65em] shrink-0 inline-block align-middle" />
+              </span>
               <span className="text-ink-soft block">
                 <span aria-hidden="true">— </span>
                 {site.role}
@@ -60,41 +64,50 @@ export function Hero() {
 
             {/* CTA. Primary lebih dulu di urutan DOM sekaligus di urutan tab. */}
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <ButtonLink href="/#work" variant="primary">
-                Lihat Karya Pilihan
-                <ArrowDown />
-              </ButtonLink>
+              <Magnetic>
+                <ButtonLink href="#work" variant="primary">
+                  View Selected Work
+                  <ArrowDown />
+                </ButtonLink>
+              </Magnetic>
 
-              <ResumeButton variant="secondary" label="Unduh CV" />
+              <Magnetic>
+                <ResumeButton variant="secondary" label="View Resume" />
+              </Magnetic>
 
-              <TrackedLink
-                href={`https://github.com/${site.githubUsername}`}
-                event="click_github_profile"
-                external
-                className={buttonStyles("secondary")}
-              >
-                <GitHubMark />
-                GitHub
-                <ArrowUpRight />
-              </TrackedLink>
+              <Magnetic>
+                <TrackedLink
+                  href={`https://github.com/${site.githubUsername}`}
+                  event="click_github_profile"
+                  external
+                  className={buttonStyles("secondary")}
+                >
+                  <GitHubMark />
+                  GitHub
+                  <ArrowUpRight />
+                </TrackedLink>
+              </Magnetic>
 
-              <TrackedLink
-                href={`mailto:${site.email}`}
-                event="click_email"
-                className={buttonStyles("secondary")}
-              >
-                Hubungi Saya
-              </TrackedLink>
+              <Magnetic>
+                <TrackedLink
+                  href={`mailto:${site.email}`}
+                  event="click_email"
+                  className={buttonStyles("secondary")}
+                >
+                  <MailIcon />
+                  Contact Me
+                </TrackedLink>
+              </Magnetic>
             </div>
 
             {/* Meta baris bawah */}
             <dl className="border-rule mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 border-t pt-8 sm:grid-cols-3">
               <div>
-                <dt className="label">Lokasi</dt>
+                <dt className="label">Location</dt>
                 <dd className="mt-2 text-sm">{site.location}</dd>
               </div>
               <div>
-                <dt className="label">Preferensi</dt>
+                <dt className="label">Preference</dt>
                 <dd className="mt-2 text-sm">{site.workPreference}</dd>
               </div>
               <div>
@@ -104,31 +117,15 @@ export function Hero() {
             </dl>
           </div>
 
-          {/* Foto profil — muncul di semua ukuran layar. Di mobile tampil di
-              atas (order-first), di desktop mengisi kolom kanan. Foto memberi
-              wajah pada nama, bikin portfolio terasa personal.
-
-              Treatment: grayscale penuh + sedikit contrast/brightness supaya
-              nyatu dengan tema editorial monokrom (kertas + tinta). Hover
-              mengembalikan warna asli — detail interaktif yang halus. */}
-          <div className="order-first lg:order-none lg:col-span-3">
-            <div className="group relative mx-auto aspect-[3/4] w-full max-w-[16rem] lg:ml-auto lg:mr-0">
-              {/* Offset frame: garis tinta di belakang foto, khas editorial */}
-              <div
-                aria-hidden="true"
-                className="border-ink absolute -inset-2 -z-10 rounded-[1.25rem] border opacity-15"
-              />
-              <div className="relative h-full w-full overflow-hidden rounded-2xl border border-rule shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
-                <Image
-                  src="/images/abni-photo.jpg"
-                  alt="Foto Abni Basit"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 13rem, 16rem"
-                  className="object-cover object-top grayscale contrast-[1.05] brightness-[1.03] transition-all duration-500 ease-out group-hover:scale-[1.02] group-hover:grayscale-0"
-                />
-              </div>
-            </div>
+          {/* Foto profil — Lingkaran Avatar Interaktif dengan efek Pixel Matrix Dissolve */}
+          <div className="order-first lg:order-none lg:col-span-3 lg:pt-10">
+            <PixelAvatar
+              srcInitial="/images/abni-jousting1.png"
+              srcHover="/images/abni-photo.jpg"
+              altInitial="Jousting Knight Avatar"
+              altHover="Foto Abni Basit"
+              gridResolution={10}
+            />
           </div>
         </div>
       </Container>

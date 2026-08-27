@@ -2,25 +2,22 @@ import type { SkillGroup } from "@/types";
 
 /**
  * ATURAN PENGISIAN (PRD 10.5):
- * - Jangan pakai persentase atau progress bar. Tidak ada angka subjektif.
  * - Hanya tulis teknologi yang benar-benar pernah kamu pakai di proyek nyata.
  * - `core: true` untuk yang kamu kuasai dan siap ditanya saat interview.
- *   Sisanya (tanpa `core`) = pernah dipakai, masih belajar.
- * - Hapus grup yang tidak relevan, jangan diisi asal supaya terlihat penuh.
  */
 export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend",
-    note: "Nyaman membangun UI dari nol maupun dengan framework — fokus pada hasil yang rapi dan responsif.",
+    note: "Nyaman membangun UI dari nol maupun dengan framework — fokus pada hasil yang rapi, responsif, dan performan.",
     items: [
-      { name: "HTML", core: true },
-      { name: "CSS", core: true },
+      { name: "HTML5", core: true },
+      { name: "CSS3", core: true },
       { name: "JavaScript", core: true },
       { name: "TypeScript", core: true },
-      { name: "React.js", core: true },
+      { name: "React", core: true },
       { name: "Next.js", core: true },
-      { name: "Tailwind CSS", core: true },
-      { name: "jQuery" },
+      { name: "Vite" },
+      { name: "Tailwind", core: true },
       { name: "Bootstrap" },
     ],
   },
@@ -32,23 +29,24 @@ export const skillGroups: SkillGroup[] = [
       { name: "Laravel", core: true },
       { name: "CodeIgniter 3", core: true },
       { name: "Node.js" },
-      { name: "REST API", core: true },
       { name: "Express" },
+      { name: "REST API", core: true },
     ],
   },
   {
-    title: "Database",
-    note: "Punya pengalaman merancang skema relasional dan query kompleks di lingkungan produksi.",
+    title: "Database & Cloud",
+    note: "Punya pengalaman merancang skema relasional, query kompleks, serta integrasi layanan cloud/BaaS.",
     items: [
       { name: "MySQL", core: true },
       { name: "PostgreSQL" },
-      { name: "Migration & Seeding", core: true },
-      { name: "Query Optimization" },
+      { name: "SQLite" },
+      { name: "Firebase" },
+      { name: "Supabase" },
     ],
   },
   {
     title: "Mobile",
-    note: "Mulai merambah pengembangan aplikasi mobile — pernah membangun UI dan fitur sederhana dengan Flutter.",
+    note: "Membangun aplikasi mobile cross-platform dan native.",
     items: [
       { name: "Flutter" },
       { name: "Dart" },
@@ -56,15 +54,23 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: "Tools & Lainnya",
-    note: "Alat sehari-hari untuk versioning, deploy, mengajar, dan kolaborasi tim.",
+    title: "Tools & Ecosystem",
+    note: "Alat sehari-hari untuk versioning, pengujian API, lingkungan pengembangan, deployment, dan otomatisasi.",
     items: [
-      { name: "Git & GitHub", core: true },
-      { name: "Vercel", core: true },
+      { name: "Git", core: true },
+      { name: "GitHub", core: true },
+      { name: "Postman" },
       { name: "Figma" },
-      { name: "cPanel / Hosting" },
-      { name: "Mentoring & Teaching", core: true },
-      { name: "Problem Solving", core: true },
+      { name: "Canva" },
+      { name: "VS Code" },
+      { name: "NPM" },
+      { name: "Laragon" },
+      { name: "PowerShell" },
+      { name: "Prettier" },
+      { name: "Nodemon" },
+      { name: "FFmpeg" },
+      { name: "Netlify" },
+      { name: "Cloudflare" },
     ],
   },
 ];

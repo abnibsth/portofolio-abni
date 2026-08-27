@@ -77,13 +77,22 @@ export default async function ProjectDetailPage({
 
       <article className="py-12 sm:py-16">
         <Container>
-          <Link
-            href="/projects"
-            className="link-underline text-ink-soft hover:text-ink inline-flex items-center gap-2 text-sm transition-colors"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Semua project
-          </Link>
+          <div className="flex flex-wrap items-center gap-3 text-sm font-medium">
+            <Link
+              href="/"
+              className="link-underline text-ink-soft hover:text-ink inline-flex items-center gap-1.5 transition-colors"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Beranda
+            </Link>
+            <span className="text-ink-faint font-mono text-xs">/</span>
+            <Link
+              href="/projects"
+              className="link-underline text-ink-soft hover:text-ink inline-flex items-center gap-1.5 transition-colors"
+            >
+              Semua project
+            </Link>
+          </div>
 
           {/* ---------- Header ---------- */}
           <header className="mt-10 grid gap-y-8 lg:grid-cols-12 lg:gap-x-12">

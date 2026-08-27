@@ -15,7 +15,7 @@ export const site = {
   name: "Abni Basit",
 
   /** [GANTI] Role yang kamu targetkan. Muncul persis di sebelah nama. */
-  role: "Full Stack Developer",
+  role: "Full-Stack Web Developer",
 
   /**
    * [GANTI] Positioning statement. Satu kalimat, maksimal ~20 kata.
@@ -23,13 +23,13 @@ export const site = {
    * bangun dan UNTUK SIAPA, bukan daftar teknologi.
    */
   tagline:
-    "Saya membangun antarmuka web yang rapi, cepat, dan mudah diakses dengan React dan Next.js.",
+    "I'm a full-stack web developer building web applications and backend systems with Laravel, Next.js, CodeIgniter, and MySQL, with practical experience in building production HR systems and mentoring student developers.",
 
   /** [GANTI] Kota, Negara. */
   location: "Jakarta, Indonesia",
 
-  /** [GANTI] Preferensi kerja: "Remote", "Hybrid", "Onsite", atau kombinasi. */
-  workPreference: "Remote / Hybrid",
+  /** [GANTI] Preferensi kerja: "On-site", "Hybrid", atau kombinasi. */
+  workPreference: "On-site / Hybrid",
 
   /**
    * Status ketersediaan. Set `available: false` kalau sedang tidak mencari
@@ -38,9 +38,9 @@ export const site = {
   availability: {
     available: true,
     /** [GANTI] Teks singkat status. */
-    label: "Terbuka untuk peluang kerja",
+    label: "Available for opportunities",
     /** [GANTI] Detail, contoh: "Full-time · Mulai Agustus 2026". */
-    detail: "Full-time · Junior sampai Mid-level",
+    detail: "Full-time · Junior to Mid-level",
   },
 
   /* --- Kontak ------------------------------------------------------------- */
@@ -64,20 +64,17 @@ export const site = {
 
   resume: {
     /**
-     * [WAJIB] Taruh file PDF-mu di `public/resume/` dengan nama persis ini.
-     * Selama file belum ada, tombol Resume otomatis disembunyikan supaya
-     * tidak ada broken link (PRD 28: "Tidak ada broken link").
+     * PDF ditaruh di `public/resume/abni-basit-cv.pdf`.
      */
-    path: "/resume/abni-basit-frontend-developer.pdf",
+    path: "/resume/abni-basit-cv.pdf",
     /** Nama file saat diunduh visitor. */
-    downloadName: "abni-basit-frontend-developer.pdf",
+    downloadName: "abni-basit-cv.pdf",
     /**
-     * Set `true` setelah kamu benar-benar menaruh PDF di public/resume/.
-     * Selama `false`, semua tombol Resume disembunyikan.
+     * Set `true` agar tombol Resume/CV tampil di hero dan header.
      */
-    isAvailable: false,
+    isAvailable: true,
     /** [GANTI] Bulan/tahun terakhir resume diperbarui. */
-    updatedAt: "Juli 2026",
+    updatedAt: "Agustus 2026",
   },
 
   /* --- SEO ---------------------------------------------------------------- */
@@ -91,18 +88,19 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://abnibasit.vercel.app",
 
   /** Judul default. Halaman lain menambahkan prefix sendiri. */
-  title: "Abni Basit — Portfolio Full Stack Developer",
+  title: "Abni Basit — Portfolio Full-Stack Web Developer",
 
   description:
-    "Portfolio full stack developer berisi proyek pilihan, studi kasus teknis, dan aktivitas GitHub terbaru.",
+    "Portfolio full-stack web developer berisi proyek pilihan, studi kasus teknis, dan aktivitas GitHub terbaru.",
 
   keywords: [
-    "Full Stack Developer",
+    "Full-Stack Web Developer",
+    "Web Developer",
     "Frontend Developer",
     "Backend Developer",
     "Next.js Developer",
     "React Developer",
-    "Web Developer",
+    "Laravel Developer",
     "Portfolio",
     "Software Engineer",
   ],

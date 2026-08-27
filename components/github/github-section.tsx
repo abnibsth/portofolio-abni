@@ -9,19 +9,46 @@ import { site } from "@/data/site";
 import { getGitHubData } from "@/lib/github";
 import { compactNumber, formatMonthYear } from "@/lib/utils";
 
-/**
- * Section GitHub Activity, bertema "Building in Public" (PRD 10.7 & 30).
- *
- * Komponennya async dan memanggil `getGitHubData()`, yang hasilnya di-cache
- * lewat `use cache` selama sekitar satu jam. Artinya section ini masuk ke static
- * shell — pengunjung tidak pernah menunggu GitHub API saat membuka halaman.
- *
- * `getGitHubData()` tidak pernah melempar error. Kalau API gagal, ia
- * mengembalikan data fallback lokal dan section tetap tampil utuh. Tidak ada
- * pesan error teknis yang sampai ke recruiter.
- */
+type ContributionData = {
+  svg: string | null;
+  totalContributions: number;
+};
+
+async function getContributionChartData(username: string): Promise<ContributionData> {
+  try {
+    const res = await fetch(`https://ghchart.rshah.org/216e39/${username}`, {
+      signal: AbortSignal.timeout(6000),
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return { svg: null, totalContributions: 0 };
+    let svg = await res.text();
+
+    // Hitung total kontribusi dari data-count dalam SVG
+    const matches = [...svg.matchAll(/data-count="(\d+)"/g)];
+    const totalContributions = matches.reduce((sum, m) => sum + parseInt(m[1], 10), 0);
+
+    // Ubah semua <rect> menjadi lingkaran bulat sempurna (rx="5" ry="5")
+    svg = svg.replaceAll(/<rect\s/g, '<rect rx="5" ry="5" ');
+
+    // Ganti warna 0-kontribusi menjadi kelas CSS .contrib-0 yang fleksibel di mode terang/gelap
+    svg = svg.replaceAll(/fill="#0b0b0b"/gi, 'class="contrib-0"');
+    svg = svg.replaceAll(/fill="#000000"/gi, 'class="contrib-0"');
+    svg = svg.replaceAll(/fill="#161b22"/gi, 'class="contrib-0"');
+    svg = svg.replaceAll(/fill="#ebedf0"/gi, 'class="contrib-0"');
+    svg = svg.replaceAll(/fill="#ffffff"/gi, 'class="contrib-0"');
+
+    // Rapikan warna teks bulan & hari di dalam SVG
+    svg = svg.replaceAll(/fill="#767676"/gi, 'class="contrib-text"');
+
+    return { svg, totalContributions };
+  } catch {
+    return { svg: null, totalContributions: 0 };
+  }
+}
+
 export async function GitHubSection() {
   const { profile, featured, recent, source } = await getGitHubData();
+  const chartData = await getContributionChartData(site.githubUsername);
 
   const profileUrl = profile.url;
   const displayName = profile.name ?? profile.login;
@@ -50,7 +77,6 @@ export async function GitHubSection() {
             className="bg-surface h-16 w-16 rounded-full object-cover"
           />
         ) : (
-          // Tanpa avatar, tampilkan monogram — bukan gambar rusak.
           <div
             aria-hidden="true"
             className="bg-ink font-display text-paper flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-2xl"
@@ -78,39 +104,41 @@ export async function GitHubSection() {
         </TrackedLink>
       </div>
 
-      {/* --- Statistik profil. Ditaruh paling bawah prioritasnya sesuai PRD:
-              featured repositories jauh lebih relevan daripada jumlah follower. */}
+      {/* --- Statistik profil --- */}
+      {/* --- Statistik profil --- */}
       {hasStats ? (
-        <dl className="reveal mt-8 flex flex-wrap gap-x-10 gap-y-4">
+        <dl className="reveal mt-8 grid grid-cols-2 gap-6 sm:flex sm:flex-wrap sm:gap-10">
           <div>
             <dt className="label">Repository publik</dt>
-            <dd className="font-display mt-1 text-3xl tabular-nums">
+            <dd className="font-display mt-1 text-2xl sm:text-3xl tabular-nums">
               {compactNumber(profile.publicRepos)}
             </dd>
           </div>
           <div>
             <dt className="label">Followers</dt>
-            <dd className="font-display mt-1 text-3xl tabular-nums">
+            <dd className="font-display mt-1 text-2xl sm:text-3xl tabular-nums">
               {compactNumber(profile.followers)}
             </dd>
           </div>
           <div>
             <dt className="label">Following</dt>
-            <dd className="font-display mt-1 text-3xl tabular-nums">
+            <dd className="font-display mt-1 text-2xl sm:text-3xl tabular-nums">
               {compactNumber(profile.following)}
             </dd>
           </div>
         </dl>
       ) : null}
 
-      {/* --- Grafik kontribusi realtime (dari ghchart) --- */}
+      {/* --- GitHub Activity Heatmap Tema Terang / Paper --- */}
       <div className="reveal mt-10">
-        <h3 className="label">Kontribusi setahun terakhir</h3>
-        <div className="border-rule bg-surface overflow-hidden rounded-xl border p-4 sm:p-6">
-          <div className="github-arcade">
+        <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-ink">
+          GitHub Activity
+        </h3>
+
+        <div className="rounded-2xl border border-rule-strong/40 bg-surface p-4 sm:p-7 shadow-sm">
+          <div className="github-arcade relative">
             {/* Overlay dekoratif Snake arcade */}
             <div className="github-arcade__overlay" aria-hidden="true">
-              {/* Snake Head (Mata menghadap depan) */}
               <div className="github-arcade__snake-head">
                 <div className="github-arcade__snake-eyes">
                   <span className="github-arcade__snake-eye" />
@@ -118,7 +146,6 @@ export async function GitHubSection() {
                 </div>
               </div>
 
-              {/* Badannya mengekor di belakang kepala secara urut */}
               <div className="github-arcade__snake-body github-arcade__snake-body--1" />
               <div className="github-arcade__snake-body github-arcade__snake-body--2" />
               <div className="github-arcade__snake-body github-arcade__snake-body--3" />
@@ -126,30 +153,42 @@ export async function GitHubSection() {
               <div className="github-arcade__snake-body github-arcade__snake-body--5" />
               <div className="github-arcade__snake-body github-arcade__snake-body--6" />
 
-              {/* Makanan Uler (Apple / Green Dot) */}
               <span className="github-arcade__snake-food github-arcade__snake-food--1" />
               <span className="github-arcade__snake-food github-arcade__snake-food--2" />
               <span className="github-arcade__snake-food github-arcade__snake-food--3" />
               <span className="github-arcade__snake-food github-arcade__snake-food--4" />
             </div>
 
-            <Image
-              src={`https://ghchart.rshah.org/0b0b0b/${site.githubUsername}`}
-              alt={`Grafik kontribusi GitHub ${site.githubUsername} selama 12 bulan terakhir`}
-              width={860}
-              height={128}
-              className="w-full h-auto"
-              unoptimized
-            />
+            {chartData.svg ? (
+              <div
+                className="w-full overflow-x-auto pb-2 [&_svg]:min-w-[650px] [&_svg]:w-full [&_svg]:h-auto scrollbar-thin"
+                dangerouslySetInnerHTML={{ __html: chartData.svg }}
+              />
+            ) : (
+              <Image
+                src={`https://ghchart.rshah.org/216e39/${site.githubUsername}`}
+                alt={`Grafik kontribusi GitHub ${site.githubUsername} selama 12 bulan terakhir`}
+                width={860}
+                height={128}
+                className="w-full h-auto"
+                unoptimized
+              />
+            )}
           </div>
+
+          <p className="mt-5 font-mono text-xs sm:text-sm text-ink-soft break-words">
+            {chartData.totalContributions > 0
+              ? `${chartData.totalContributions} contributions in the last year`
+              : `Contributions in the last year on github.com/${site.githubUsername}`}
+          </p>
         </div>
       </div>
 
-      {/* --- Repository unggulan (prioritas 1 di PRD 10.7) --- */}
+      {/* --- Repository unggulan --- */}
       {featured.length > 0 ? (
         <div className="mt-14">
           <h3 className="label">Repository unggulan</h3>
-          <div className="mt-6 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map((repository) => (
               <RepoCard key={repository.name} repository={repository} />
             ))}
@@ -157,9 +196,7 @@ export async function GitHubSection() {
         </div>
       ) : null}
 
-      {/* --- Repository yang baru diperbarui (prioritas 2) ---
-              Kalau kosong, blok ini hilang begitu saja. Tidak ada tulisan
-              "No activity" — PRD 10.7 melarang pesan negatif seperti itu. */}
+      {/* --- Repository yang baru diperbarui --- */}
       {recent.length > 0 ? (
         <div className="reveal mt-14">
           <h3 className="label">Baru diperbarui</h3>

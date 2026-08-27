@@ -1,14 +1,8 @@
 import type { CSSProperties } from "react";
+import { TechIcon } from "@/components/ui/tech-icons";
 
 /**
  * Marquee — baris item yang berjalan terus tanpa henti (infinite loop).
- *
- * Cara kerja: konten di-render DUA KALI di dalam satu track, lalu track
- * digeser -50% lewat CSS animation (lihat globals.css → @keyframes marquee).
- * Karena lebar track pas dua kali konten, saat animasi selesai posisinya
- * identik dengan awal — loop-nya mulus, tanpa lompatan.
- *
- * Set kedua diberi aria-hidden supaya screen reader tidak membacanya dua kali.
  */
 export function Marquee({
   items,
@@ -16,9 +10,7 @@ export function Marquee({
   duration = 40,
 }: {
   items: string[];
-  /** true = baris jalan ke arah sebaliknya (kanan→kiri jadi kiri→kanan). */
   reverse?: boolean;
-  /** Durasi satu putaran penuh, dalam detik. Makin besar makin pelan. */
   duration?: number;
 }) {
   const row = (hidden: boolean) => (
@@ -29,9 +21,10 @@ export function Marquee({
       {items.map((item) => (
         <span
           key={item}
-          className="border-rule bg-surface text-ink-soft inline-flex items-center rounded-full border px-4 py-2 font-mono text-sm whitespace-nowrap"
+          className="border-rule bg-surface text-ink-soft inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-sm whitespace-nowrap"
         >
-          {item}
+          <TechIcon name={item} className="h-4 w-4 shrink-0" />
+          <span>{item}</span>
         </span>
       ))}
     </div>

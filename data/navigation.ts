@@ -6,10 +6,10 @@
  * lalu scroll ke section work.
  */
 export const navItems = [
-  { label: "Karya", href: "/#work" },
-  { label: "Tentang", href: "/#about" },
-  { label: "Keahlian", href: "/#skills" },
-  { label: "Pengalaman", href: "/#experience" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Experience", href: "/#experience" },
   { label: "GitHub", href: "/#github" },
-  { label: "Kontak", href: "/#contact" },
+  { label: "Contact", href: "/#contact" },
 ] as const;

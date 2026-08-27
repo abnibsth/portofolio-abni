@@ -40,7 +40,7 @@ export function Skills() {
         />
       </div>
 
-      <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
         {skillGroups.map((group) => (
           <div key={group.title} className="reveal border-rule border-t pt-6">
             <h3 className="font-display text-2xl">{group.title}</h3>

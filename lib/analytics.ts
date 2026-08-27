@@ -18,8 +18,13 @@ export function track(
   event: AnalyticsEvent,
   properties?: Record<string, string | number | boolean | null>,
 ): void {
-  // Di development, Vercel Analytics hanya mencatat ke console — itu wajar.
-  vercelTrack(event, properties);
+  try {
+    if (typeof window !== "undefined") {
+      vercelTrack(event, properties);
+    }
+  } catch {
+    // Safely ignore analytics errors in local dev environment
+  }
 }
 
 export type { AnalyticsEvent };

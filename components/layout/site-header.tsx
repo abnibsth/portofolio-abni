@@ -1,18 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { MobileNav } from "@/components/navigation/mobile-nav";
 import { Container } from "@/components/ui/container";
+import { VerifiedBadge } from "@/components/ui/icons";
 import { ResumeButton } from "@/components/ui/resume-button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { navItems } from "@/data/navigation";
 import { site } from "@/data/site";
 
 /**
  * Header sticky (PRD 11).
- *
- * Tingginya dijaga tetap rendah (56px) supaya tidak memakan ruang, dan memakai
- * background semi-transparan + blur agar teks di belakangnya tidak menembus.
- * Blur di sini murni CSS, tanpa listener scroll — nol JavaScript di header
- * kecuali menu mobile.
  */
 export function SiteHeader() {
   return (
@@ -21,12 +19,22 @@ export function SiteHeader() {
         <div className="flex h-14 items-center justify-between gap-6">
           <Link
             href="/"
-            className="font-display text-xl tracking-tight"
+            className="font-sans text-xl font-bold tracking-tight flex items-center gap-2 group"
             aria-label={`${site.name} — kembali ke halaman utama`}
           >
-            {site.name}
-            <span aria-hidden="true" className="text-ink-faint">
-              .
+            <Image
+              src="/images/abni-jousting1.png"
+              alt={`${site.name} Logo`}
+              width={28}
+              height={28}
+              className="h-7 w-7 rounded-full object-cover border border-rule-strong shrink-0 transition-transform duration-300 group-hover:scale-105"
+            />
+            <span className="flex items-center gap-1.5">
+              <span>{site.name}</span>
+              <VerifiedBadge className="h-4 w-4 shrink-0" />
+              <span aria-hidden="true" className="text-ink-faint font-normal">
+                .
+              </span>
             </span>
           </Link>
 
@@ -45,12 +53,15 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-3">
-            <ResumeButton
-              variant="secondary"
-              label="CV"
-              className="hidden h-9 px-4 text-xs md:inline-flex"
-            />
+          <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
+            <div className="hidden md:block">
+              <ResumeButton
+                variant="secondary"
+                label="CV"
+                className="h-9 px-4 text-xs"
+              />
+            </div>
             <MobileNav />
           </div>
         </div>

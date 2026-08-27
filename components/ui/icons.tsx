@@ -1,165 +1,114 @@
+import React from "react";
+import {
+  FiArrowUpRight,
+  FiArrowRight,
+  FiArrowLeft,
+  FiArrowDown,
+  FiExternalLink,
+  FiGithub,
+  FiStar,
+  FiMenu,
+  FiX,
+  FiMail,
+} from "react-icons/fi";
+import { cn } from "@/lib/utils";
+
 /**
- * Ikon inline sebagai SVG. Tidak memakai icon library supaya nol dependency
- * dan nol JavaScript tambahan (PRD 13.2).
- *
- * Semua ikon di sini murni dekoratif dan diberi aria-hidden — maknanya selalu
- * dibawa oleh teks di sebelahnya, tidak pernah oleh ikonnya (PRD 18).
+ * UI Icons powered by react-icons (https://react-icons.github.io/).
  */
 
 type IconProps = { className?: string };
 
-const base = "h-4 w-4 shrink-0";
+const base = "h-4 w-4 shrink-0 inline-block align-middle";
 
-/** Panah diagonal — penanda link keluar (PRD 10.2: indikator link eksternal). */
-export function ArrowUpRight({ className = base }: IconProps) {
+/** ArrowUpRight Icon from react-icons/fi */
+export function ArrowUpRight({ className }: IconProps) {
+  return <FiArrowUpRight className={cn(base, className)} aria-hidden="true" />;
+}
+
+/** ArrowRight Icon from react-icons/fi */
+export function ArrowRight({ className }: IconProps) {
+  return <FiArrowRight className={cn(base, className)} aria-hidden="true" />;
+}
+
+/** ArrowLeft Icon from react-icons/fi */
+export function ArrowLeft({ className }: IconProps) {
+  return <FiArrowLeft className={cn(base, className)} aria-hidden="true" />;
+}
+
+/** ArrowDown Icon from react-icons/fi */
+export function ArrowDown({ className }: IconProps) {
+  return <FiArrowDown className={cn(base, className)} aria-hidden="true" />;
+}
+
+/** ExternalLink Icon from react-icons/fi */
+export function ExternalLinkIcon({ className }: IconProps) {
+  return <FiExternalLink className={cn(base, className)} aria-hidden="true" />;
+}
+
+/** Github Icon from react-icons/fi */
+export function GitHubMark({ className }: IconProps) {
+  return <FiGithub className={cn(base, className)} aria-hidden="true" />;
+}
+
+/** Star Icon from react-icons/fi */
+export function Star({ className }: IconProps) {
+  return <FiStar className={cn(base, className)} aria-hidden="true" />;
+}
+
+/** Fork Icon */
+export function Fork({ className }: IconProps) {
   return (
     <svg
-      viewBox="0 0 16 16"
+      viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      className={className}
+      className={cn(base, className)}
     >
-      <path d="M4.5 11.5 11.5 4.5" />
-      <path d="M5.5 4.5h6v6" />
+      <circle cx="12" cy="18" r="3" />
+      <circle cx="6" cy="6" r="3" />
+      <circle cx="18" cy="6" r="3" />
+      <path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9" />
+      <path d="M12 12v3" />
     </svg>
   );
 }
 
-/** Panah ke kanan — navigasi internal. */
-export function ArrowRight({ className = base }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M2.5 8h11" />
-      <path d="M9 3.5 13.5 8 9 12.5" />
-    </svg>
-  );
+/** Menu Icon from react-icons/fi */
+export function Menu({ className }: IconProps) {
+  return <FiMenu className={cn(base, className)} aria-hidden="true" />;
 }
 
-export function ArrowLeft({ className = base }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M13.5 8h-11" />
-      <path d="M7 3.5 2.5 8 7 12.5" />
-    </svg>
-  );
+/** Close Icon from react-icons/fi */
+export function Close({ className }: IconProps) {
+  return <FiX className={cn(base, className)} aria-hidden="true" />;
 }
 
-export function ArrowDown({ className = base }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M8 2.5v11" />
-      <path d="M3.5 9 8 13.5 12.5 9" />
-    </svg>
-  );
+/** Mail Icon from react-icons/fi */
+export function MailIcon({ className }: IconProps) {
+  return <FiMail className={cn(base, className)} aria-hidden="true" />;
 }
 
-export function GitHubMark({ className = base }: IconProps) {
+/** Official Blue Verified Checkmark Badge Icon */
+export function VerifiedBadge({ className }: IconProps) {
   return (
     <svg
-      viewBox="0 0 16 16"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
+      viewBox="0 0 24 24"
+      aria-label="Verified Profile"
+      className={cn("h-7 w-7 text-[#1D9BF0] shrink-0 inline-block align-middle", className)}
     >
-      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.07-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.15 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A7.995 7.995 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
-    </svg>
-  );
-}
-
-export function Star({ className = base }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M8 2l1.85 3.9 4.15.58-3.05 2.9.77 4.12L8 11.6l-3.72 1.9.77-4.12L2 6.48l4.15-.58L8 2Z" />
-    </svg>
-  );
-}
-
-export function Fork({ className = base }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeLinecap="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <circle cx="4" cy="3.5" r="1.6" />
-      <circle cx="12" cy="3.5" r="1.6" />
-      <circle cx="8" cy="12.5" r="1.6" />
-      <path d="M4 5.1v1.3a1.5 1.5 0 0 0 1.5 1.5h5A1.5 1.5 0 0 0 12 6.4V5.1M8 7.9v3" />
-    </svg>
-  );
-}
-
-export function Menu({ className = base }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M2 4.5h12M2 11.5h12" />
-    </svg>
-  );
-}
-
-export function Close({ className = base }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M3.5 3.5l9 9M12.5 3.5l-9 9" />
+      <path
+        fill="#1D9BF0"
+        d="M22.25 12c0-1.43-.88-2.67-2.19-3.19.46-1.39.12-2.96-.94-4-1.05-1.06-2.62-1.4-4-.94C14.67 2.56 13.43 1.68 12 1.68s-2.67.88-3.19 2.19c-1.39-.46-2.96-.12-4 .94-1.06 1.05-1.4 2.62-.94 4C2.56 9.33 1.68 10.57 1.68 12s.88 2.67 2.19 3.19c-.46 1.39-.12 2.96.94 4 1.05 1.06 2.62 1.4 4 .94 1.05 1.76 2.53 2.19 3.19 2.19s2.67-.88 3.19-2.19c1.39.46 2.96.12 4-.94 1.06-1.05 1.4-2.62.94-4 1.31-.52 2.19-1.76 2.19-3.19z"
+      />
+      <path
+        fill="#FFFFFF"
+        d="M10.2 16.25l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4-7 7z"
+      />
     </svg>
   );
 }

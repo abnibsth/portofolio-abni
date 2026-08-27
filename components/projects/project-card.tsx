@@ -1,31 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { ArrowUpRight, GitHubMark } from "@/components/ui/icons";
+import { ArrowRight, ExternalLinkIcon, GitHubMark } from "@/components/ui/icons";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { TagList } from "@/components/ui/tag";
 import { TrackedLink } from "@/components/ui/tracked-link";
-import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 
 /**
- * Kartu project (PRD 10.2).
+ * Kartu project ringkas 2 kolom (PRD 10.2).
  *
- * Pola aksesibilitas yang dipakai di sini: kartu TIDAK dibungkus satu <a> besar.
- * Yang menjadi link adalah judulnya, lalu pseudo-element ::after miliknya
- * dibentangkan menutupi seluruh kartu — jadi seluruh area tetap bisa diklik
- * mouse, sementara pengguna keyboard hanya menemukan satu tab stop untuk kartu
- * ini, bukan satu untuk setiap elemen di dalamnya.
- *
- * Link demo dan repository diangkat dengan z-index supaya tetap bisa diklik
- * sendiri, dan keduanya berada setelah judul dalam urutan DOM sehingga urutan
- * tab-nya masuk akal.
- *
- * `priority` hanya untuk kartu pertama: gambar itu berada di paruh atas halaman
- * dan menjadi kandidat Largest Contentful Paint (PRD 19).
+ * Desain kartu boks bermargin halus dengan visual cover, status, role,
+ * daftar ikon teknologi, serta tombol aksi Visit Site & Case Study.
  */
 export function ProjectCard({
   project,
-  index,
   priority = false,
 }: {
   project: Project;
@@ -35,114 +24,96 @@ export function ProjectCard({
   const detailHref = `/projects/${project.slug}`;
 
   return (
-    <article className="reveal group border-rule relative isolate border-t pt-8">
-      <div className="flex items-baseline justify-between gap-4">
-        <span
+    <SpotlightCard className="reveal">
+      <div>
+        {/* Cover Image Container */}
+        <TrackedLink
+          href={project.demoUrl || detailHref}
+          event="click_project_demo"
+          eventProperties={{ project: project.slug }}
+          external={!!project.demoUrl}
+          tabIndex={-1}
           aria-hidden="true"
-          className="text-ink-faint font-mono text-xs tabular-nums"
+          className="bg-surface relative block aspect-[16/10] w-full overflow-hidden rounded-xl border border-rule/60 mb-5"
         >
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <span className="text-ink-faint font-mono text-[0.6875rem] tracking-[0.12em] uppercase">
-          {project.type} · {project.year}
-        </span>
-      </div>
-
-      {/* Visual dominan, sesuai arah editorial PRD 8.4. Rasio dipatok lewat
-          aspect-ratio + fill supaya tidak ada pergeseran layout saat memuat. */}
-      <Link
-        href={detailHref}
-        tabIndex={-1}
-        aria-hidden="true"
-        className="bg-surface mt-6 block overflow-hidden"
-      >
-        <div className="relative aspect-[8/5] w-full">
           <Image
             src={project.cover.src}
-            alt=""
+            alt={project.cover.alt || project.title}
             fill
             priority={priority}
-            sizes="(min-width: 1024px) 60vw, 100vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
-        </div>
-      </Link>
+        </TrackedLink>
 
-      <div className="mt-7 grid gap-x-10 gap-y-5 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <h3 className="text-3xl sm:text-4xl">
-            <Link
-              href={detailHref}
-              className={cn(
-                "link-underline",
-                // Bentangkan area klik ke seluruh kartu.
-                "after:absolute after:inset-0 after:z-0 after:content-['']",
-              )}
+        {/* Title & Role */}
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3 className="font-sans text-xl sm:text-2xl font-bold tracking-tight text-ink">
+              <Link
+                href={detailHref}
+                className="hover:underline focus:outline-none"
+              >
+                {project.title}
+              </Link>
+            </h3>
+            <p className="font-mono text-xs text-ink-faint mt-1">
+              {project.role}
+            </p>
+          </div>
+          <span className="inline-flex items-center rounded-full border border-rule-strong px-2.5 py-0.5 font-mono text-[0.6875rem] text-ink-soft uppercase tracking-wider shrink-0">
+            {project.status}
+          </span>
+        </div>
+
+        {/* Summary */}
+        <p className="text-ink-soft mt-3 text-sm line-clamp-2 leading-relaxed">
+          {project.summary}
+        </p>
+
+        {/* Tech Stack Icons */}
+        <div className="mt-4">
+          <TagList items={project.stack} label={`Teknologi pada ${project.title}`} />
+        </div>
+      </div>
+
+      {/* Footer Actions */}
+      <div className="mt-6 pt-4 border-t border-rule/60 flex items-center justify-between gap-3 text-xs font-mono tracking-wider uppercase">
+        <div className="flex items-center gap-3">
+          {project.repoUrl ? (
+            <TrackedLink
+              href={project.repoUrl}
+              event="click_github_repository"
+              eventProperties={{ project: project.slug }}
+              external
+              className="text-ink-soft hover:text-ink inline-flex items-center gap-1.5 transition-colors font-medium"
             >
-              {project.title}
-            </Link>
-          </h3>
-
-          <p className="text-ink-soft mt-3 max-w-xl">{project.summary}</p>
-
-          <TagList
-            items={project.stack}
-            className="mt-5"
-            label={`Teknologi pada ${project.title}`}
-          />
+              <GitHubMark className="h-3.5 w-3.5" />
+              Repo
+            </TrackedLink>
+          ) : null}
         </div>
 
-        <dl className="space-y-4 lg:col-span-1">
-          <div>
-            <dt className="label">Peran</dt>
-            <dd className="text-ink-soft mt-1.5 text-sm">{project.role}</dd>
-          </div>
-          <div>
-            <dt className="label">Status</dt>
-            <dd className="text-ink-soft mt-1.5 text-sm">{project.status}</dd>
-          </div>
-        </dl>
-      </div>
-
-      {/* Link sekunder. z-10 mengangkatnya di atas area klik kartu. */}
-      <div className="relative z-10 mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 pb-10">
-        <Link
-          href={detailHref}
-          className="link-underline inline-flex items-center gap-1.5 text-sm font-medium"
-        >
-          Baca studi kasus
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </Link>
-
-        {project.demoUrl ? (
-          <TrackedLink
-            href={project.demoUrl}
-            event="click_project_demo"
-            eventProperties={{ project: project.slug }}
-            external
-            className="link-underline text-ink-soft hover:text-ink inline-flex items-center gap-1.5 text-sm transition-colors"
+        <div className="flex items-center gap-4">
+          {project.demoUrl ? (
+            <TrackedLink
+              href={project.demoUrl}
+              event="click_project_demo"
+              eventProperties={{ project: project.slug }}
+              external
+              className="text-ink hover:underline inline-flex items-center gap-1.5 font-semibold transition-colors"
+            >
+              Visit Site <ExternalLinkIcon className="h-3.5 w-3.5" />
+            </TrackedLink>
+          ) : null}
+          <Link
+            href={detailHref}
+            className="text-ink-soft hover:text-ink link-underline inline-flex items-center gap-1.5 transition-colors font-medium"
           >
-            Demo langsung
-            <ArrowUpRight className="h-3.5 w-3.5" />
-            <span className="sr-only">(terbuka di tab baru)</span>
-          </TrackedLink>
-        ) : null}
-
-        {project.repoUrl ? (
-          <TrackedLink
-            href={project.repoUrl}
-            event="click_github_repository"
-            eventProperties={{ project: project.slug }}
-            external
-            className="link-underline text-ink-soft hover:text-ink inline-flex items-center gap-1.5 text-sm transition-colors"
-          >
-            <GitHubMark className="h-3.5 w-3.5" />
-            Repository
-            <ArrowUpRight className="h-3.5 w-3.5" />
-            <span className="sr-only">(terbuka di tab baru)</span>
-          </TrackedLink>
-        ) : null}
+            Case Study <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
       </div>
-    </article>
+    </SpotlightCard>
   );
 }

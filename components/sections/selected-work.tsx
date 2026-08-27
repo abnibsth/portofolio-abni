@@ -45,7 +45,7 @@ export function SelectedWork() {
           </p>
         </div>
 
-        <div className="mt-16 space-y-8">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {featuredProjects.map((project, index) => (
             <ProjectCard
               key={project.slug}

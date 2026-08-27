@@ -1,3 +1,4 @@
+import { TechIcon } from "@/components/ui/tech-icons";
 import { cn } from "@/lib/utils";
 
 /**
@@ -11,22 +12,37 @@ export function Tag({
   children,
   emphasis = false,
   className,
+  name,
 }: {
   children: React.ReactNode;
   emphasis?: boolean;
   className?: string;
+  name?: string;
 }) {
+  let iconName = name;
+  if (!iconName) {
+    if (typeof children === "string") {
+      iconName = children;
+    } else if (Array.isArray(children)) {
+      const firstStr = children.find((c) => typeof c === "string");
+      if (typeof firstStr === "string") {
+        iconName = firstStr;
+      }
+    }
+  }
+
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full px-3 py-1 font-mono text-xs",
+        "inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-xs transition-colors",
         emphasis
           ? "border-ink bg-ink text-paper border"
-          : "border-rule-strong text-ink-soft border",
+          : "border-rule-strong text-ink-soft hover:border-ink hover:text-ink border bg-surface/50",
         className,
       )}
     >
-      {children}
+      {iconName ? <TechIcon name={iconName} className="h-3.5 w-3.5 shrink-0 inline-block align-middle" /> : null}
+      <span>{children}</span>
     </span>
   );
 }

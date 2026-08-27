@@ -1,81 +1,73 @@
-import Link from "next/link";
+import Image from "next/image";
 
 import { Container } from "@/components/ui/container";
-import { ArrowUpRight } from "@/components/ui/icons";
-import { TrackedLink } from "@/components/ui/tracked-link";
-import { navItems } from "@/data/navigation";
+import { VisitorCounter } from "@/components/ui/visitor-counter";
 import { site } from "@/data/site";
-import { socialLinks } from "@/data/social-links";
 
+/**
+ * SiteFooter — Footer versi kustom monokrom (PRD 10.8).
+ *
+ * Menampilkan kutipan personal, identitas ringkas, stacked avatars, dan pill badge
+ * jumlah pengunjung ("Visited by 1.922 people").
+ */
 export function SiteFooter() {
+  const avatars = [
+    { src: "/images/jousting1.png", alt: "Jousting Avatar 1" },
+    { src: "/images/jousting2.png", alt: "Jousting Avatar 2" },
+    { src: "/images/jousting3.png", alt: "Jousting Avatar 3" },
+    { src: "/images/jousting4.png", alt: "Jousting Avatar 4" },
+  ];
+
   return (
-    <footer className="border-rule border-t">
+    <footer className="mt-16">
       <Container>
-        <div className="grid gap-12 py-16 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <p className="font-display text-3xl sm:text-4xl">
-              {site.name}
-              <span aria-hidden="true" className="text-ink-faint">
-                .
-              </span>
-            </p>
-            <p className="text-ink-soft mt-3 max-w-sm">{site.tagline}</p>
-            <p className="label mt-6">
-              {site.location} · {site.workPreference}
-            </p>
-          </div>
+        {/* Top dashed divider & main footer content */}
+        <div className="border-t border-dashed border-rule-strong/40 pt-8 pb-10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            {/* Left Column: Quote & Identity */}
+            <div className="space-y-2">
+              <p className="font-sans italic text-ink-soft text-base sm:text-lg tracking-wide">
+                Pengulangan sampai menjadi teknik.
+              </p>
+              <p className="font-mono text-xs sm:text-sm text-ink-soft flex flex-wrap items-center gap-2">
+                <span className="font-semibold text-ink">{site.name}</span>
+                <span className="text-ink-faint">/</span>
+                <span>{site.role}</span>
+                <span className="text-ink-faint">/</span>
+                <span>{site.location}</span>
+              </p>
+            </div>
 
-          <nav aria-label="Navigasi footer" className="lg:col-span-3">
-            <p className="label">Halaman</p>
-            <ul className="mt-5 space-y-2.5">
-              <li>
-                <Link
-                  href="/projects"
-                  className="link-underline text-ink-soft hover:text-ink text-sm transition-colors"
-                >
-                  Semua Project
-                </Link>
-              </li>
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="link-underline text-ink-soft hover:text-ink text-sm transition-colors"
+            {/* Right Column: Stacked Avatars & Visited Counter Pill */}
+            <div className="flex flex-wrap items-center gap-4 shrink-0">
+              {/* Stacked overlapping avatars */}
+              <div className="flex items-center -space-x-3 overflow-hidden p-1">
+                {avatars.map((avatar, idx) => (
+                  <div
+                    key={idx}
+                    className="relative h-10 w-10 rounded-full border-2 border-paper overflow-hidden bg-surface shadow-sm transition-transform hover:z-10 hover:scale-110"
                   >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+                    <Image
+                      src={avatar.src}
+                      alt={avatar.alt}
+                      fill
+                      sizes="40px"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
 
-          <div className="lg:col-span-4">
-            <p className="label">Terhubung</p>
-            <ul className="mt-5 space-y-2.5">
-              {socialLinks.map((link) => (
-                <li key={link.label}>
-                  <TrackedLink
-                    href={link.href}
-                    event={link.event}
-                    external={!link.href.startsWith("mailto:")}
-                    className="link-underline text-ink-soft hover:text-ink inline-flex items-center gap-1.5 text-sm transition-colors"
-                  >
-                    {link.label}
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </TrackedLink>
-                </li>
-              ))}
-            </ul>
+              {/* Real-time Visited by counter pill badge */}
+              <VisitorCounter />
+            </div>
           </div>
         </div>
 
-        <div className="border-rule flex flex-col gap-3 border-t py-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-ink-faint font-mono text-xs">
-            © {site.copyrightYear} {site.name}
-          </p>
-          <p className="text-ink-faint font-mono text-xs">
-            Dibangun dengan Next.js dan Tailwind CSS
-          </p>
+        {/* Bottom copyright bar */}
+        <div className="border-t border-rule flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between text-ink-faint font-mono text-xs">
+          <p>© {site.copyrightYear} {site.name}</p>
+          <p>Dibangun dengan Next.js dan Tailwind CSS</p>
         </div>
       </Container>
     </footer>

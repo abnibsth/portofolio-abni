@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+
+import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -8,17 +9,9 @@ import { site } from "@/data/site";
 
 import "./globals.css";
 
-/**
- * Font dimuat lewat next/font sehingga di-self-host, otomatis di-preload, dan
- * tidak menimbulkan layout shift (PRD 19: "Gunakan font optimization").
- *
- * Instrument Serif untuk heading, Geist untuk body — kombinasi serif display +
- * sans-serif yang direkomendasikan PRD 8.3.
- */
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-instrument-serif",
+  variable: "--font-plus-jakarta",
   display: "swap",
 });
 
@@ -35,12 +28,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // metadataBase membuat semua URL relatif (OG image, canonical) otomatis
-  // menjadi absolut. Tanpa ini, preview di media sosial akan rusak.
   metadataBase: new URL(site.url),
   title: {
     default: site.title,
-    // Halaman lain cukup menulis judulnya sendiri, sisanya ditambahkan di sini.
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -48,6 +38,11 @@ export const metadata: Metadata = {
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   alternates: { canonical: "/" },
+  icons: {
+    icon: "/images/abni-jousting1.png",
+    shortcut: "/images/abni-jousting1.png",
+    apple: "/images/abni-jousting1.png",
+  },
   openGraph: {
     type: "website",
     locale: site.locale,
@@ -73,35 +68,51 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
+import { ScrollRevealProvider } from "@/components/scroll-reveal-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang={site.lang}
-      className={`${instrumentSerif.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${plusJakartaSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="flex min-h-dvh flex-col">
-        {/* Skip link: target keyboard pertama di halaman, tersembunyi sampai
-            mendapat fokus (PRD 18: navigasi dapat digunakan dengan keyboard). */}
-        <a
-          href="#main"
-          className="focus:bg-ink focus:text-paper sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:px-5 focus:py-3 focus:text-sm"
-        >
-          Lompat ke konten utama
-        </a>
+      <head>
+        <link rel="icon" href="public/images/abni-jousting1.png" type="image/png" sizes="any" />
+        <link rel="shortcut icon" href="/images/abni-jousting1.png" />
+        <link rel="apple-touch-icon" href="/images/abni-jousting1.png" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+      </head>
+      <body className="flex min-h-dvh flex-col bg-paper text-ink transition-colors duration-200">
+        <ThemeProvider defaultTheme="light" attribute="class">
+          <ScrollRevealProvider>
+            {/* Skip link */}
+            <a
+              href="#main"
+              className="focus:bg-ink focus:text-paper sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:px-5 focus:py-3 focus:text-sm"
+            >
+              Lompat ke konten utama
+            </a>
 
-        <SiteHeader />
+            <SiteHeader />
 
-        <main id="main" className="flex-1">
-          {children}
-        </main>
+            <main id="main" className="flex-1">
+              {children}
+            </main>
 
-        <SiteFooter />
+            <SiteFooter />
 
-        {/* Analytics hanya mengirim data setelah di-deploy ke Vercel.
-            Di lokal, script ini tidak melakukan apa pun. */}
-        <Analytics />
+            <Analytics />
+          </ScrollRevealProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
