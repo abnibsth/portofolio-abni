@@ -26,7 +26,7 @@ export function CaseStudyBlock({
       className={cn("reveal border-rule border-t py-12 sm:py-14", className)}
     >
       <div className="grid gap-y-6 lg:grid-cols-12 lg:gap-x-12">
-        <div className="lg:col-span-4">
+        <div className="min-w-0 lg:col-span-4">
           <div className="flex items-baseline gap-4">
             <span
               aria-hidden="true"
@@ -40,7 +40,7 @@ export function CaseStudyBlock({
           </div>
         </div>
 
-        <div className="lg:col-span-8">{children}</div>
+        <div className="min-w-0 lg:col-span-8">{children}</div>
       </div>
     </section>
   );

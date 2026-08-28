@@ -7,7 +7,6 @@ import { PixelAvatar } from "@/components/ui/pixel-avatar";
 import { ResumeButton } from "@/components/ui/resume-button";
 import { TrackedLink } from "@/components/ui/tracked-link";
 import { site } from "@/data/site";
-import { ensureKnightImage } from "@/lib/knight-image";
 
 /**
  * Hero (PRD 10.1).
@@ -16,13 +15,11 @@ import { ensureKnightImage } from "@/lib/knight-image";
  * besar, karena satu-satunya tugas hero meyakinkan pengunjung sebelum scroll.
  */
 export function Hero() {
-  ensureKnightImage();
-
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden">
       <Container>
         <div className="grid items-start gap-y-12 pt-14 pb-20 sm:pt-20 lg:grid-cols-12 lg:gap-x-12 lg:pb-28">
-          <div className="lg:col-span-9">
+          <div className="min-w-0 lg:col-span-9">
             {/* Baris status: label + availability */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
               <span className="label">Portfolio · {site.role}</span>
@@ -118,7 +115,7 @@ export function Hero() {
           </div>
 
           {/* Foto profil — Lingkaran Avatar Interaktif dengan efek Pixel Matrix Dissolve */}
-          <div className="order-first lg:order-none lg:col-span-3 lg:pt-10">
+          <div className="order-first min-w-0 lg:order-none lg:col-span-3 lg:pt-10">
             <PixelAvatar
               srcInitial="/images/abni-jousting1.png"
               srcHover="/images/abni-photo.jpg"

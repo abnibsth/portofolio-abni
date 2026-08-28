@@ -67,7 +67,7 @@ export function MobileNav() {
         type="button"
         onClick={open}
         aria-expanded={isOpen}
-        className="border-rule-strong hover:border-ink inline-flex h-11 items-center gap-2 rounded-full border px-4 text-sm transition-colors md:hidden"
+        className="border-rule-strong hover:border-ink inline-flex h-11 items-center gap-2 rounded-full border px-4 text-sm transition-colors lg:hidden"
       >
         <Menu />
         Menu
@@ -82,7 +82,7 @@ export function MobileNav() {
         onClick={(event) => {
           if (event.target === event.currentTarget) close();
         }}
-        className="bg-paper text-ink backdrop:bg-ink/40 m-0 h-dvh max-h-none w-full max-w-none p-0 md:hidden"
+        className="bg-paper text-ink backdrop:bg-ink/40 m-0 h-dvh max-h-none w-full max-w-none p-0 lg:hidden"
       >
         <div className="flex h-full flex-col px-6 py-5">
           <div className="flex items-center justify-between">

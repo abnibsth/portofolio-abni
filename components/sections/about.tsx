@@ -70,7 +70,7 @@ export function About() {
         title="Keaktifan di Event & Conference Teknologi"
         intro="Meningkatkan keterampilan rekayasa perangkat lunak melalui kehadiran di berbagai tech summit, workshop AI, dan meetup developer. Klik tumpukan foto untuk melihat foto selanjutnya."
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div key={currentPage} className="event-page-transition grid grid-cols-1 sm:grid-cols-2 gap-8">
           {displayedEvents.map((event) => (
             <SpotlightCard key={event.title}>
               <div>

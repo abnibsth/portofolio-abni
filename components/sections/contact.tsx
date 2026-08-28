@@ -21,7 +21,7 @@ export function Contact() {
 
       <Container>
         <div className="grid gap-y-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-x-12">
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <span className="text-ink-soft font-mono text-[0.6875rem] tracking-[0.16em] uppercase">
               Kontak
             </span>
@@ -59,7 +59,7 @@ export function Contact() {
             ) : null}
           </div>
 
-          <div className="lg:col-span-5 lg:pl-6">
+          <div className="min-w-0 lg:col-span-5 lg:pl-6">
             <span className="text-ink-soft font-mono text-[0.6875rem] tracking-[0.16em] uppercase">
               Semua tautan
             </span>

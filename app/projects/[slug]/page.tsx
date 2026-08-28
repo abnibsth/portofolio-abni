@@ -96,7 +96,7 @@ export default async function ProjectDetailPage({
 
           {/* ---------- Header ---------- */}
           <header className="mt-10 grid gap-y-8 lg:grid-cols-12 lg:gap-x-12">
-            <div className="lg:col-span-8">
+            <div className="min-w-0 lg:col-span-8">
               <span className="label">
                 {project.type} · {project.year}
               </span>
@@ -141,7 +141,7 @@ export default async function ProjectDetailPage({
 
             {/* Project Overview — semua fakta ringkas dikumpulkan di satu tempat
                 supaya hiring manager tidak perlu memindai seluruh artikel. */}
-            <dl className="divide-rule border-rule divide-y border-t lg:col-span-4 lg:border-t-0">
+            <dl className="divide-rule border-rule divide-y border-t min-w-0 lg:col-span-4 lg:border-t-0">
               <div className="grid grid-cols-[7rem_1fr] gap-4 py-3.5">
                 <dt className="label">Peran</dt>
                 <dd className="text-ink-soft text-sm">{project.role}</dd>

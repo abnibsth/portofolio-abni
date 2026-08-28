@@ -39,7 +39,7 @@ export function Section({
     >
       <Container>
         <div className="grid gap-y-10 lg:grid-cols-12 lg:gap-x-12">
-          <header className="reveal lg:col-span-4">
+          <header className="reveal min-w-0 lg:col-span-4">
             <div className="flex items-baseline gap-4">
               {index ? (
                 <span
@@ -64,7 +64,7 @@ export function Section({
             ) : null}
           </header>
 
-          <div className="lg:col-span-8">{children}</div>
+          <div className="min-w-0 lg:col-span-8">{children}</div>
         </div>
       </Container>
     </section>

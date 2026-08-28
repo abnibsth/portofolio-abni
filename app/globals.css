@@ -66,6 +66,11 @@ html[data-theme="dark"] {
     /* Offset supaya heading tidak tertutup sticky header saat anchor-scroll */
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
+    /* Jaring pengaman anti scroll horizontal di mobile. `clip` dipilih daripada
+       `hidden` karena tidak memaksa overflow-y berubah jadi `auto` (yang bisa
+       mengganggu `position: sticky` pada header) — didukung semua browser
+       modern (Safari 16.4+, Chrome, Firefox). */
+    overflow-x: clip;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -182,6 +187,30 @@ html[data-theme="dark"] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   EVENT PAGINATION TRANSITION (Fade + Slide Halus Saat Ganti Halaman)
+   --------------------------------------------------------------------------- */
+@keyframes event-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.event-page-transition {
+  animation: event-page-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-page-transition {
+    animation: none;
   }
 }
 

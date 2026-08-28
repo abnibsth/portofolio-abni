@@ -96,7 +96,7 @@ export async function GitHubSection() {
           href={profileUrl}
           event="click_github_profile"
           external
-          className={buttonStyles("secondary", "h-11 shrink-0 px-5 text-xs")}
+          className={buttonStyles("secondary", "h-11 w-full shrink-0 px-5 text-xs sm:w-auto")}
         >
           <GitHubMark />
           Buka profil

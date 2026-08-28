@@ -38,7 +38,7 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <nav aria-label="Navigasi utama" className="hidden md:block">
+          <nav aria-label="Navigasi utama" className="hidden lg:block">
             <ul className="flex items-center gap-7">
               {navItems.map((item) => (
                 <li key={item.href}>
@@ -55,7 +55,7 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <ThemeToggle />
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <ResumeButton
                 variant="secondary"
                 label="CV"
