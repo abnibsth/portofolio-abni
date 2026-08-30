@@ -278,17 +278,6 @@ export default async function ProjectDetailPage({
           </Container>
         </nav>
       ) : null}
-              <span className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
-                <span className="font-display text-4xl sm:text-5xl lg:text-6xl">
-                  {next.title}
-                </span>
-                <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" />
-              </span>
-              <span className="text-paper/70 mt-4 block max-w-xl">{next.summary}</span>
-            </Link>
-          </Container>
-        </nav>
-      ) : null}
     </>
   );
 }
