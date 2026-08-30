@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   alternates: { canonical: "/" },
-  ...(googleVerification
-    ? { verification: { google: googleVerification } }
-    : {}),
+  verification: {
+    google: "D7SKv9LxuJjfhYWoG7O18GGzx0rMK5RFwsaL6gi4eds",
+  },
   icons: {
     icon: "/images/abni-jousting1.png",
     shortcut: "/images/abni-jousting1.png",
