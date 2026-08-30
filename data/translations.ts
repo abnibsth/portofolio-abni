@@ -1,6 +1,111 @@
 export type Language = "en" | "id";
 
-export const translations = {
+export interface TranslationSchema {
+  site: {
+    role: string;
+    tagline: string;
+    location: string;
+    workPreference: string;
+    availabilityLabel: string;
+    availabilityDetail: string;
+    resumeUpdatedAt: string;
+  };
+  nav: {
+    work: string;
+    about: string;
+    skills: string;
+    experience: string;
+    github: string;
+    contact: string;
+  };
+  hero: {
+    badge: string;
+    viewWork: string;
+    viewResume: string;
+    github: string;
+    contactMe: string;
+    locationLabel: string;
+    preferenceLabel: string;
+    statusLabel: string;
+  };
+  selectedWork: {
+    label: string;
+    heading: string;
+    intro: string;
+    viewAll: string;
+  };
+  about: {
+    label: string;
+    heading: string;
+    intro: string;
+    p1: string;
+    p2: string;
+    p3: string;
+    eventsLabel: string;
+    eventsHeading: string;
+    eventsIntro: string;
+    next: string;
+    highlights: {
+      h1: { label: string; value: string; detail: string };
+      h2: { label: string; value: string; detail: string };
+      h3: { label: string; value: string; detail: string };
+      h4: { label: string; value: string; detail: string };
+    };
+  };
+  skills: {
+    label: string;
+    heading: string;
+    intro: string;
+    example: string;
+    legend: string;
+    groups: {
+      frontend: string;
+      backend: string;
+      database: string;
+      mobile: string;
+      tools: string;
+    };
+  };
+  experience: {
+    label: string;
+    heading: string;
+    intro: string;
+    items: Array<{
+      role: string;
+      kind: string;
+      period: string;
+      summary: string;
+      achievements: string[];
+    }>;
+  };
+  github: {
+    label: string;
+    heading: string;
+    introLive: string;
+    introStatic: string;
+    openProfile: string;
+    publicRepos: string;
+    followers: string;
+    following: string;
+    featured: string;
+    recent: string;
+    notice: string;
+  };
+  contact: {
+    label: string;
+    heading: string;
+    intro: string;
+    downloadCv: string;
+    cvUpdated: string;
+    allLinks: string;
+  };
+  footer: {
+    quote: string;
+    copyright: string;
+  };
+}
+
+export const translations: Record<Language, TranslationSchema> = {
   en: {
     site: {
       role: "Full-Stack Web Developer",
@@ -245,4 +350,4 @@ export const translations = {
       copyright: "Dibangun dengan Next.js & Tailwind CSS",
     },
   },
-} as const;
+};
