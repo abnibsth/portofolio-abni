@@ -73,6 +73,7 @@ export type ExperienceKind =
   | "Internship"
   | "Freelance"
   | "Kontrak"
+  | "Contract"
   | "Organisasi"
   | "Bootcamp"
   | "Kursus"
