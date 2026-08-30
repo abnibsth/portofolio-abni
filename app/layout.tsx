@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -27,6 +28,9 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -38,6 +42,9 @@ export const metadata: Metadata = {
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   alternates: { canonical: "/" },
+  ...(googleVerification
+    ? { verification: { google: googleVerification } }
+    : {}),
   icons: {
     icon: "/images/abni-jousting1.png",
     shortcut: "/images/abni-jousting1.png",
@@ -115,6 +122,22 @@ export default function RootLayout({
               <SiteFooter />
 
               <Analytics />
+              {gaId ? (
+                <>
+                  <Script
+                    src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+                    strategy="afterInteractive"
+                  />
+                  <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+                      window.dataLayer = window.dataLayer || [];
+                      function gtag(){dataLayer.push(arguments);}
+                      gtag('js', new Date());
+                      gtag('config', '${gaId}');
+                    `}
+                  </Script>
+                </>
+              ) : null}
             </ScrollRevealProvider>
           </LanguageProvider>
         </ThemeProvider>
