@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-import { navItems } from "@/data/navigation";
+import { useLanguage } from "@/components/language-provider";
 import { Close, Menu } from "@/components/ui/icons";
 
 /**
@@ -18,9 +18,19 @@ import { Close, Menu } from "@/components/ui/icons";
  * memulihkan fokus ke tombol pembuka setelah menu ditutup.
  */
 export function MobileNav() {
+  const { t } = useLanguage();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = [
+    { label: t.nav.work, href: "/#work" },
+    { label: t.nav.about, href: "/#about" },
+    { label: t.nav.skills, href: "/#skills" },
+    { label: t.nav.experience, href: "/#experience" },
+    { label: t.nav.github, href: "/#github" },
+    { label: t.nav.contact, href: "/#contact" },
+  ];
 
   function open() {
     dialogRef.current?.showModal();
@@ -75,7 +85,7 @@ export function MobileNav() {
 
       <dialog
         ref={dialogRef}
-        aria-label="Menu navigasi"
+        aria-label="Navigation Menu"
         // Klik pada backdrop mengenai elemen <dialog> itu sendiri, sedangkan
         // klik pada isi menu mengenai anak-anaknya — jadi cukup bandingkan
         // target dengan currentTarget untuk membedakan keduanya.
@@ -86,7 +96,7 @@ export function MobileNav() {
       >
         <div className="flex h-full flex-col px-6 py-5">
           <div className="flex items-center justify-between">
-            <span className="label">Navigasi</span>
+            <span className="label">Navigation</span>
             <button
               type="button"
               onClick={close}

@@ -57,13 +57,13 @@ export async function GitHubSection() {
   return (
     <Section
       id="github"
-      index="05"
+      index="06"
       label="Building in Public"
-      title="Aktivitas GitHub"
+      title="GitHub Activity"
       intro={
         source === "live"
-          ? "Diambil langsung dari GitHub dan disegarkan otomatis setiap beberapa jam."
-          : "Repository pilihan yang paling menggambarkan cara saya bekerja."
+          ? "Fetched directly from GitHub API and refreshed automatically every few hours."
+          : "Featured open source repositories showcasing development practices."
       }
     >
       {/* --- Ringkasan profil --- */}
@@ -71,7 +71,7 @@ export async function GitHubSection() {
         {profile.avatarUrl ? (
           <Image
             src={profile.avatarUrl}
-            alt={`Foto profil GitHub ${displayName}`}
+            alt={`GitHub profile picture for ${displayName}`}
             width={64}
             height={64}
             className="bg-surface h-16 w-16 rounded-full object-cover"
@@ -99,17 +99,16 @@ export async function GitHubSection() {
           className={buttonStyles("secondary", "h-11 w-full shrink-0 px-5 text-xs sm:w-auto")}
         >
           <GitHubMark />
-          Buka profil
+          Open Profile
           <ArrowUpRight className="h-3.5 w-3.5" />
         </TrackedLink>
       </div>
 
       {/* --- Statistik profil --- */}
-      {/* --- Statistik profil --- */}
       {hasStats ? (
         <dl className="reveal mt-8 grid grid-cols-2 gap-6 sm:flex sm:flex-wrap sm:gap-10">
           <div>
-            <dt className="label">Repository publik</dt>
+            <dt className="label">Public Repositories</dt>
             <dd className="font-display mt-1 text-2xl sm:text-3xl tabular-nums">
               {compactNumber(profile.publicRepos)}
             </dd>
@@ -167,7 +166,7 @@ export async function GitHubSection() {
             ) : (
               <Image
                 src={`https://ghchart.rshah.org/216e39/${site.githubUsername}`}
-                alt={`Grafik kontribusi GitHub ${site.githubUsername} selama 12 bulan terakhir`}
+                alt={`GitHub contribution graph for ${site.githubUsername} over the last 12 months`}
                 width={860}
                 height={128}
                 className="w-full h-auto"
@@ -187,7 +186,7 @@ export async function GitHubSection() {
       {/* --- Repository unggulan --- */}
       {featured.length > 0 ? (
         <div className="mt-14">
-          <h3 className="label">Repository unggulan</h3>
+          <h3 className="label">Featured Repositories</h3>
           <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map((repository) => (
               <RepoCard key={repository.name} repository={repository} />
@@ -199,7 +198,7 @@ export async function GitHubSection() {
       {/* --- Repository yang baru diperbarui --- */}
       {recent.length > 0 ? (
         <div className="reveal mt-14">
-          <h3 className="label">Baru diperbarui</h3>
+          <h3 className="label">Recently Updated</h3>
           <ul className="divide-rule border-rule mt-4 divide-y border-t">
             {recent.map((repository) => (
               <li key={repository.name}>
@@ -213,7 +212,7 @@ export async function GitHubSection() {
                   <span className="flex items-center gap-2 font-mono text-sm">
                     {repository.name}
                     <ArrowUpRight className="text-ink-faint group-hover:text-ink h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    <span className="sr-only">(terbuka di tab baru)</span>
+                    <span className="sr-only">(opens in new tab)</span>
                   </span>
                   <span className="text-ink-faint font-mono text-[0.6875rem]">
                     {repository.language ? `${repository.language} · ` : ""}
@@ -227,8 +226,7 @@ export async function GitHubSection() {
       ) : null}
 
       <p className="border-rule text-ink-faint mt-10 border-t pt-6 font-mono text-xs">
-        Kontribusi pada repository privat tidak ditampilkan di sini. Yang terlihat hanya
-        aktivitas publik di{" "}
+        Private repository contributions are excluded. Showing public activity on{" "}
         <TrackedLink
           href={profileUrl}
           event="click_github_profile"

@@ -8,9 +8,9 @@ import { projects } from "@/data/projects";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Semua Project",
+  title: "All Projects",
   description:
-    "Kumpulan project web yang saya kerjakan, lengkap dengan studi kasus berisi masalah, keputusan teknis, dan hasilnya.",
+    "Complete list of web applications and projects featuring technical case studies, decisions, and production metrics.",
   path: "/projects",
 });
 
@@ -29,18 +29,16 @@ export default function ProjectsPage() {
           className="link-underline text-ink-soft hover:text-ink mb-8 inline-flex items-center gap-2 text-sm font-medium transition-colors"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
-          Kembali ke Beranda
+          Back to Home
         </Link>
 
         <header className="max-w-3xl">
-          <span className="label">Arsip Karya</span>
+          <span className="label">Project Archive</span>
           <h1 className="mt-5 text-[clamp(2.5rem,7vw,5rem)] leading-[1.02]">
-            Semua project
+            All Projects
           </h1>
           <p className="text-ink-soft mt-6 text-lg">
-            {projects.length} project, diurutkan dari yang terbaru. Setiap judul
-            mengarah ke studi kasus yang menjelaskan alasan di balik keputusan
-            teknisnya.
+            {projects.length} projects, ordered chronologically. Click any project to read the detailed technical case study.
           </p>
         </header>
 

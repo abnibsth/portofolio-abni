@@ -2,31 +2,15 @@ import type { Project } from "@/types";
 
 /**
  * ============================================================================
- * PROJECTS
+ * PROJECTS (100% Full English Content)
  * ============================================================================
- * Ini sumber tunggal untuk /projects, /projects/[slug], dan homepage.
- *
- * ATURAN PENGISIAN (PRD 10.2 & 10.3):
- * - Homepage menampilkan project dengan `featured: true`. Jaga 3–5 saja.
- * - `slug` menentukan URL dan harus unik: /projects/<slug>.
- * - Halaman detail adalah STUDI KASUS, bukan galeri. Yang paling dicari
- *   hiring manager: `contribution` (apa yang KAMU kerjakan) dan
- *   `technicalDecisions` (kenapa kamu memilih pendekatan itu).
- * - `results` boleh berupa angka, tapi kalau belum ada angka, learning outcome
- *   yang jujur jauh lebih baik daripada klaim kosong.
- * - Setiap gambar WAJIB punya `alt` deskriptif.
- *
- * ISI DI BAWAH INI MASIH TEMPLATE. Ganti dengan proyek aslimu — struktur dan
- * panjang tulisannya sudah pas, tinggal tukar isinya.
- *
- * Cara menambah project baru: lihat DOCS.md bagian "3. Menambah Project".
  */
 export const projects: Project[] = [
   {
     slug: "kulkas-berisi",
     title: "Kulkas Berisi",
     summary:
-      "Aplikasi AI Zero-Waste untuk mengolah sisa bahan makanan di kulkas menjadi resep lezat sebelum kedaluwarsa.",
+      "Zero-Waste AI web application that transforms leftover fridge ingredients into delicious recipes before expiry.",
     year: "2025",
     type: "AI Web Application",
     role: "Full-Stack Developer · Solo",
@@ -37,61 +21,61 @@ export const projects: Project[] = [
     featured: true,
     cover: {
       src: "/images/kulkasberisi.png",
-      alt: "Tampilan landing page Kulkas Berisi dengan headline Dari sisa bahan jadi makan malam dan fitur AI Recipe Generator",
+      alt: "Kulkas Berisi landing page featuring AI Recipe Generator",
       width: 1600,
       height: 900,
     },
     context: [
-      "Banyak rumah tangga dan anak kos sering membuang bahan makanan yang tersisa di kulkas karena bingung ingin dimasak jadi apa.",
-      "Kulkas Berisi diciptakan sebagai solusi Zero-Waste pintar berteknologi AI untuk merekomendasikan resep masakan berdasarkan sisa bahan yang ada.",
+      "Many households and students discard leftover fridge ingredients simply because they don't know what dish to cook with them.",
+      "Kulkas Berisi was built as a smart Zero-Waste AI platform recommending step-by-step recipes tailored directly to available fridge items.",
     ],
     problem: [
-      "Food waste dari sisa bahan makanan rumah tangga mencapai tonan setiap bulannya karena kurangnya ide resep yang cepat dan praktis.",
-      "Aplikasi resep biasa memerlukan pencarian manual dan jarang mendukung kombinasi bahan yang terbatas atau acak.",
+      "Household food waste reaches tons every month due to a lack of quick and practical recipe ideas.",
+      "Traditional recipe apps require manual search and rarely accommodate limited or random ingredient combinations.",
     ],
     solution: [
-      "Mengembangkan generator resep bertenaga AI yang menerima input daftar bahan di kulkas dan secara instan menghasilkan instruksi memasak langkah-demi-langkah.",
-      "Merancang antarmuka landing page & aplikasi yang sangat modern, intuitif, dan responsif dengan indikator statistik dampak zero-waste.",
+      "Engineered an AI-powered recipe generator that takes a list of fridge ingredients and instantly outputs structured step-by-step cooking instructions.",
+      "Designed a modern, intuitive, and fully responsive landing page & app interface with zero-waste impact metrics.",
     ],
     contribution: [
-      "Mengembangkan seluruh arsitektur aplikasi dari konseptualisasi UI/UX, integrasi AI prompt engineering, hingga deployment.",
-      "Mengimplementasikan integrasi API rekomendasi resep real-time dan statistik penggunaan.",
+      "Built the full application architecture from UI/UX design, AI prompt engineering, to cloud edge deployment.",
+      "Implemented real-time API integrations for recipe generation and usage statistics.",
     ],
     technicalDecisions: [
       {
         heading: "Next.js App Router & Prompt Engineering",
         body: [
-          "Memanfaatkan Next.js Server Actions untuk memproses prompt AI secara aman tanpa mengartifisialkan API key di sisi klien.",
-          "Menerapkan struktur JSON schema terstruktur pada output AI untuk menjamin resep yang dihasilkan selalu konsisten dan dapat diparse oleh komponen UI.",
+          "Leveraged Next.js Server Actions to securely process AI prompts on the server without exposing API keys to the client.",
+          "Enforced strict JSON schema output formatting on LLM responses to ensure reliable client-side parsing.",
         ],
       },
       {
-        heading: "Desain Editorial & Responsif dengan Tailwind CSS",
+        heading: "Editorial & Responsive UI with Tailwind CSS",
         body: [
-          "Membuat landing page estetis berlatar terang dengan kartu preview visual interaktif yang menampilkan contoh hasil generasi resep (Telur - Ayam - Wortel).",
+          "Crafted an aesthetic light-theme landing page with interactive preview cards demonstrating recipe generation (e.g., Egg - Chicken - Carrot).",
         ],
       },
     ],
     challenges: [
       {
-        heading: "Meminimalkan Latensi Generasi Resep AI",
+        heading: "Minimizing AI Recipe Generation Latency",
         body: [
-          "Proses pemanggilan LLM awal memerlukan beberapa detik. Saya mengimplementasikan efek loading state yang komunikatif dan caching resep populer untuk respons instan.",
+          "Initial LLM response times took several seconds. I implemented loading states and popularity caching for near-instant responses.",
         ],
       },
     ],
     results: [
-      "10.4K+ Pengguna Aktif dan 51K+ Resep Dihasilkan.",
-      "Mengurangi estimasi 1.9 Ton Food Waste dengan Rating Pengguna 4.8/5.0.",
-      "Repositori Open Source di GitHub: github.com/abnibsth/kulkasberisi.",
+      "10.4K+ Active Users and 51K+ Recipes Generated.",
+      "Estimated 1.9 Tons of Food Waste Prevented with 4.8/5.0 User Rating.",
+      "Open Source Repository on GitHub: github.com/abnibsth/kulkasberisi.",
     ],
     gallery: [
       {
         src: "/images/kulkasberisi.png",
-        alt: "Kulkas Berisi Landing Page & Fitur AI Recipe Generator",
+        alt: "Kulkas Berisi Landing Page & AI Recipe Generator",
         width: 1600,
         height: 900,
-        caption: "Tampilan utama Kulkas Berisi — Aplikasi AI Zero-Waste untuk mengolah sisa bahan makanan.",
+        caption: "Main interface of Kulkas Berisi — Zero-Waste AI application for leftover ingredients.",
       },
     ],
   },
@@ -99,7 +83,7 @@ export const projects: Project[] = [
     slug: "ngopi-go",
     title: "NgopiGo",
     summary:
-      "Platform pemesanan kopi online intuitif untuk mempermudah pemesanan menu favorit tanpa antrean panjang.",
+      "Intuitive online coffee ordering platform eliminating long queues during peak coffee shop hours.",
     year: "2025",
     type: "Web Application",
     role: "Full-Stack Developer · Solo",
@@ -110,69 +94,68 @@ export const projects: Project[] = [
     featured: true,
     cover: {
       src: "/images/ngopigo.png",
-      alt: "Tampilan antarmuka pemesanan web aplikasi NgopiGo",
+      alt: "NgopiGo web ordering interface preview",
       width: 1600,
       height: 900,
     },
     context: [
-      "Antrean panjang di coffee shop sering membuat pelanggan enggan memesan saat jam sibuk.",
-      "NgopiGo hadir sebagai platform pemesanan online serba cepat agar pelanggan bisa memilih menu dan melakukan pemesanan sebelum tiba di lokasi.",
+      "Long coffee shop queues discourage customers from ordering during rush hours.",
+      "NgopiGo provides a fast online ordering portal allowing customers to pick items and order before arriving at the venue.",
     ],
     problem: [
-      "Proses pemesanan manual di kasir memakan waktu dan sering menyebabkan ketidakpastian antrean.",
-      "Menu fisik sering kali tidak menampilkan variasi opsi kustomisasi secara jelas.",
+      "Manual ordering at POS counters causes delay and queue uncertainty.",
+      "Physical menus often fail to present customization options clearly.",
     ],
     solution: [
-      "Mengembangkan aplikasi pemesanan kopi berbasis web dengan kategori produk yang terstruktur (Coffee, Non-Coffee, Pastry).",
-      "Menyediakan fitur kustomisasi pesanan (level manis, ice, size) dan keranjang belanja dengan kalkulasi harga otomatis.",
+      "Developed a web-based coffee ordering platform with structured product categories (Coffee, Non-Coffee, Pastry).",
+      "Built custom order options (sweetness level, ice, size) and an interactive cart with real-time price calculations.",
     ],
     contribution: [
-      "Mengembangkan seluruh aplikasi secara mandiri dari arsitektur backend, manajemen database MySQL, hingga antarmuka pengguna frontend.",
-      "Merancang alur pemesanan yang responsif dan nyaman digunakan dari perangkat ponsel pintar.",
+      "Developed the entire application independently from backend architecture, MySQL database, to frontend UI.",
+      "Designed a responsive, mobile-first ordering flow optimized for smartphone viewports.",
     ],
     technicalDecisions: [
       {
-        heading: "Pengelolaan State Keranjang Belanja",
+        heading: "Shopping Cart State Management",
         body: [
-          "Mengimplementasikan state management lokal untuk menyimpan item pesanan beserta varian kustomisasi secara real-time tanpa latensi server.",
+          "Implemented local state management for instant cart item tracking and real-time variation calculations without server latency.",
         ],
       },
       {
-        heading: "Desain Antarmuka Berfokus Mobile-First",
+        heading: "Mobile-First Design with Tailwind CSS",
         body: [
-          "Memakai Tailwind CSS untuk membangun antarmuka pemesanan cepat dengan ukuran target sentuh yang besar dan navigasi kategori yang presisi.",
+          "Utilized Tailwind CSS to build a clean mobile ordering UI with large touch targets and category navigation.",
         ],
       },
     ],
     challenges: [
       {
-        heading: "Penanganan Kustomisasi Varian Minuman",
+        heading: "Handling Flexible Beverage Customizations",
         body: [
-          "Tiap minuman memiliki opsi variasi yang berbeda. Saya merancang relasi tabel database yang fleksibel untuk menyimpan opsi kustomisasi tanpa merusak kalkulasi total harga.",
+          "Different beverages required different option sets. I designed flexible database table schemas to store custom options without corrupting price calculations.",
         ],
       },
     ],
     results: [
-      "Mempermudah alur pemesanan kopi secara digital.",
-      "Proses checkout cepat dengan antarmuka yang ramah pengguna.",
-      "Repositori Open Source di GitHub: github.com/abnibsth/ngopi-go.",
+      "Streamlined digital coffee ordering workflow.",
+      "Instant checkout experience with user-friendly navigation.",
+      "Open Source Repository on GitHub: github.com/abnibsth/ngopi-go.",
     ],
     gallery: [
       {
         src: "/images/ngopigo.png",
-        alt: "Tampilan aplikasi web NgopiGo",
+        alt: "NgopiGo web application interface",
         width: 1600,
         height: 900,
-        caption: "Antarmuka pemesanan menu produk pada aplikasi web NgopiGo.",
+        caption: "Product menu ordering interface on the NgopiGo web application.",
       },
     ],
   },
-
   {
     slug: "cek-api",
-    title: "Cek API — Monitor API Key",
+    title: "Cek API — API Key Monitor",
     summary:
-      "Aplikasi web utilitas untuk validasi status, cek kuota, rate limit, dan pemantauan kesehatan API Key secara instan.",
+      "Utility web application for validating status, quota usage, rate limits, and latency of API keys instantly.",
     year: "2025",
     type: "Developer Tool / Web App",
     role: "Full-Stack Developer · Solo",
@@ -184,69 +167,68 @@ export const projects: Project[] = [
     featured: true,
     cover: {
       src: "/images/cekapi.png",
-      alt: "Tampilan dashboard aplikasi Cek API — Monitor API Key",
+      alt: "Cek API dashboard interface — API Key Monitor",
       width: 1600,
       height: 900,
     },
     context: [
-      "Developer sering mengalami masalah API key mendadak tidak valid atau kehabisan kuota saat aplikasi sedang berjalan.",
-      "Cek API dibuat sebagai tool praktis untuk memeriksa kesehatan API Key (OpenAI, Anthropic, Google, dll) tanpa harus membuka dashboard masing-masing provider.",
+      "Developers frequently face sudden runtime errors when API keys expire or run out of quota during application execution.",
+      "Cek API was built as a practical tool to inspect API Key health (OpenAI, Anthropic, Google, etc.) without opening individual provider dashboards.",
     ],
     problem: [
-      "Memeriksa sisa kredit dan validitas API key dari multiple provider memerlukan login terpisah dan waktu pemindaian yang panjang.",
-      "Rentan terjadi error runtime di produksi jika API Key kedaluwarsa tanpa penanganan awal.",
+      "Checking remaining credits across multiple providers requires separate logins and time-consuming manual requests.",
+      "High risk of production runtime failures if API keys expire unexpectedly.",
     ],
     solution: [
-      "Mengembangkan aplikasi web serba cepat yang langsung menguji API key secara aman dan menampilkan sisa kuota, rate limit, serta status keaktifan.",
-      "Menyediakan UI modern dengan indikator warna status, pencatatan latency respons, dan riwayat pengujian instan.",
+      "Engineered a high-speed web app that tests API keys securely, returning quota, rate limit, and status.",
+      "Designed a modern UI with status indicators, latency tracking, and instant verification logs.",
     ],
     contribution: [
-      "Mengembangkan seluruh aplikasi web dan sistem pengujian endpoint API dari awal hingga deployment di Vercel.",
-      "Memastikan pengujian API key dilakukan secara aman di serverless edge tanpa menyimpan kredensial sensitif pengguna.",
+      "Built the web application and API endpoint testing mechanisms from scratch and deployed on Vercel.",
+      "Ensured API key verification is executed securely at serverless edge locations without storing sensitive user credentials.",
     ],
     technicalDecisions: [
       {
-        heading: "Keamanan Kredensial di Edge Serverless",
+        heading: "Edge Serverless Credential Security",
         body: [
-          "Setiap pengujian API Key diproses melalui Next.js API Routes yang dienkripsi transient, memastikan kredensial tidak pernah disimpan di database atau tersisa di log.",
+          "Processed API Key checks through transient Next.js API Routes, ensuring credentials are never stored in databases or server logs.",
         ],
       },
       {
-        heading: "Penanganan CORS & Timeout",
+        heading: "CORS & Timeout Management",
         body: [
-          "Menerapkan mekanisme proxy serverless untuk menghindari hambatan CORS saat memanggil endpoint verifikasi dari berbagai penyedia API.",
+          "Implemented serverless proxy mechanisms to bypass CORS restrictions when pinging provider verification endpoints.",
         ],
       },
     ],
     challenges: [
       {
-        heading: "Variasi Format Respons dari Beragam Provider API",
+        heading: "Normalizing Diverse API Provider Responses",
         body: [
-          "Setiap penyedia API memiliki struktur error dan header rate-limit yang berbeda. Saya merancang lapisan normalisasi respons untuk memberikan output status yang seragam.",
+          "Different API providers use completely different error structures and rate-limit headers. I built a response normalization layer to output unified status payloads.",
         ],
       },
     ],
     results: [
-      "Aplikasi ter-deploy live di https://cek-api.vercel.app/ dan dapat digunakan secara gratis.",
-      "Hasil verifikasi API key yang instan dengan latency di bawah 300ms.",
-      "Repositori Open Source tersedia di GitHub: github.com/abnibsth/cek-api.",
+      "Live deployment on https://cek-api.vercel.app/ available for free use.",
+      "Instant API key verification with sub-300ms latency.",
+      "Open Source Repository on GitHub: github.com/abnibsth/cek-api.",
     ],
     gallery: [
       {
         src: "/images/cekapi.png",
-        alt: "Tampilan antarmuka utama Cek API",
+        alt: "Cek API main interface",
         width: 1600,
         height: 900,
-        caption: "Antarmuka pemantauan status dan validasi API Key pada aplikasi Cek API.",
+        caption: "Status monitoring and API key validation interface on Cek API.",
       },
     ],
   },
-
   {
     slug: "pelita-hati",
     title: "Pelita Hati — Digital Posyandu",
     summary:
-      "Platform sistem manajemen kesehatan terpadu dan digitalisasi data posyandu untuk pemantauan tumbuh kembang anak serta risiko stunting.",
+      "Integrated healthcare platform and digitized healthcare data management system for child growth monitoring & stunting prevention.",
     year: "2025",
     type: "HealthTech / Web Application",
     role: "Full-Stack Developer · Solo",
@@ -257,69 +239,65 @@ export const projects: Project[] = [
     featured: true,
     cover: {
       src: "/images/pelita-hati.png",
-      alt: "Tampilan landing page Pelita Hati — Infrastruktur Digital Posyandu Pantau Tumbuh Kembang",
+      alt: "Pelita Hati landing page — Digital Posyandu Infrastructure",
       width: 1600,
       height: 900,
     },
     context: [
-      "Pencatatan data imunisasi dan grafik tumbuh kembang anak di posyandu daerah sering kali masih mengandalkan KMS fisik (buku kertas) yang rentan rusak atau hilang.",
-      "Pelita Hati (SI-Posyandu) dikembangkan sebagai platform infrastruktur digital terpadu untuk mendigitalisasi pencatatan data kesehatan balita, pemantauan jadwal imunisasi, dan deteksi dini risiko stunting.",
+      "Local community health centers (Posyandu) often rely on physical paper health books (KMS) for immunization records and growth charts, which are prone to damage or loss.",
+      "Pelita Hati was built as a digital infrastructure platform to digitize toddler health records, immunization schedules, and early stunting risk detection.",
     ],
     problem: [
-      "Rekapitulasi data pencatatan gizi dan imunisasi secara manual memakan waktu petugas posyandu dan sulit dianalisis secara akurat.",
-      "Orang tua tidak memiliki portal digital mandiri untuk memantau grafik tumbuh kembang anak mereka secara real-time.",
+      "Manual paper-based nutrition & immunization logging is time-consuming for health workers and difficult to analyze accurately.",
+      "Parents lack a digital self-service portal to monitor child growth charts in real time.",
     ],
     solution: [
-      "Mengembangkan platform web terintegrasi dengan modul pencatatan rekam medis balita, kurva pertumbuhan standar WHO/Kemenkes, dan portal akses publik.",
-      "Merancang UI/UX yang modern, hangat, dan ramah pengguna dengan visualisasi data presisi untuk petugas posyandu dan ibu hamil/menyusui.",
+      "Developed an integrated web platform featuring child medical record modules, WHO/Ministry of Health standard growth curves, and a public portal.",
+      "Designed a modern, accessible UI/UX with data visualizations for health workers and parents.",
     ],
     contribution: [
-      "Mengembangkan seluruh infrastruktur sistem dari arsitektur database MySQL, alur logika kalkulasi indeks Z-Score (BB/U, TB/U), hingga tampilan antarmuka web.",
-      "Mengimplementasikan fitur ekspor laporan rekapitulasi kesehatan dan jadwal imunisasi otomatis.",
+      "Engineered the complete system infrastructure from MySQL database architecture, Z-Score calculation logic, to frontend interfaces.",
+      "Implemented automated PDF exports for health summaries and immunization schedules.",
     ],
     technicalDecisions: [
       {
-        heading: "Arsitektur Backend Laravel & Database MySQL",
+        heading: "Laravel Backend & MySQL Database Architecture",
         body: [
-          "Memanfaatkan kerangka kerja Laravel untuk menangani alur autentikasi multi-role (Admin Posyandu, Kader, dan Orang Tua) secara aman.",
-          "Merancang skema database MySQL terstruktur yang dioptimalkan untuk kueri histori imunisasi dan grafik pertumbuhan balita.",
+          "Utilized Laravel to handle multi-role authentication (Posyandu Admin, Health Cadres, Parents) securely.",
+          "Designed structured MySQL schemas optimized for query speed across immunization records and growth metrics.",
         ],
       },
       {
-        heading: "Desain Antarmuka Responsif & Inklusif",
+        heading: "Inclusive & Responsive Interface Design",
         body: [
-          "Memakai Tailwind CSS untuk menghadirkan antarmuka bersih bertema hijau kesehatan yang responsif diakses dari smartphone maupun PC kader posyandu.",
+          "Used Tailwind CSS to build a clean health-themed UI responsive across mobile devices and desktop workstations.",
         ],
       },
     ],
     challenges: [
       {
-        heading: "Kalkulasi Otomatis Indeks Tumbuh Kembang Anak",
+        heading: "Automated Child Growth Index Calculation",
         body: [
-          "Menyesuaikan perhitungan standar antropometri anak agar indikator status gizi (gizi kurang, normal, stunting) dihitung secara instan berdasarkan umur dan tinggi/berat badan yang diinput.",
+          "Implemented WHO/Ministry of Health anthropometric standard formulas so nutritional status indicators are computed instantly upon data entry.",
         ],
       },
     ],
     results: [
-      "Digitalisasi penuh pencatatan data posyandu tanpa buku manual.",
-      "Akses pemantauan jadwal imunisasi dan kurva tumbuh kembang real-time.",
-      "Repositori Open Source di GitHub: github.com/abnibsth/pelita-hati.",
+      "Complete digitization of Posyandu records replacing physical logbooks.",
+      "Real-time access to immunization schedules and growth curves.",
+      "Open Source Repository on GitHub: github.com/abnibsth/pelita-hati.",
     ],
     gallery: [
       {
         src: "/images/pelita-hati.png",
-        alt: "Tampilan utama Pelita Hati — SI Posyandu Digital",
+        alt: "Pelita Hati main interface — Digital Posyandu System",
         width: 1600,
         height: 900,
-        caption: "Landing page dan portal infrastruktur data posyandu digital Pelita Hati.",
+        caption: "Landing page and digital Posyandu infrastructure portal on Pelita Hati.",
       },
     ],
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/* Helper                                                                      */
-/* -------------------------------------------------------------------------- */
 
 export const featuredProjects = projects.filter((project) => project.featured);
 
@@ -327,10 +305,6 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
 
-/**
- * Navigasi "project berikutnya" di halaman detail. Bersifat melingkar:
- * project terakhir menunjuk kembali ke yang pertama, jadi tidak pernah buntu.
- */
 export function getAdjacentProjects(slug: string) {
   const index = projects.findIndex((project) => project.slug === slug);
   if (index === -1) return { previous: undefined, next: undefined };

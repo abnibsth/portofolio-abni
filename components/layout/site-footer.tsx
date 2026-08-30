@@ -1,16 +1,15 @@
+"use client";
+
 import Image from "next/image";
 
+import { useLanguage } from "@/components/language-provider";
 import { Container } from "@/components/ui/container";
 import { VisitorCounter } from "@/components/ui/visitor-counter";
 import { site } from "@/data/site";
 
-/**
- * SiteFooter — Footer versi kustom monokrom (PRD 10.8).
- *
- * Menampilkan kutipan personal, identitas ringkas, stacked avatars, dan pill badge
- * jumlah pengunjung ("Visited by 1.922 people").
- */
 export function SiteFooter() {
+  const { t } = useLanguage();
+
   const avatars = [
     { src: "/images/jousting1.png", alt: "Jousting Avatar 1" },
     { src: "/images/jousting2.png", alt: "Jousting Avatar 2" },
@@ -27,14 +26,14 @@ export function SiteFooter() {
             {/* Left Column: Quote & Identity */}
             <div className="space-y-2">
               <p className="font-sans italic text-ink-soft text-base sm:text-lg tracking-wide">
-                Pengulangan sampai menjadi teknik.
+                {t.footer.quote}
               </p>
               <p className="font-mono text-xs sm:text-sm text-ink-soft flex flex-wrap items-center gap-2">
                 <span className="font-semibold text-ink">{site.name}</span>
                 <span className="text-ink-faint">/</span>
-                <span>{site.role}</span>
+                <span>{t.site.role}</span>
                 <span className="text-ink-faint">/</span>
-                <span>{site.location}</span>
+                <span>{t.site.location}</span>
               </p>
             </div>
 
@@ -67,7 +66,7 @@ export function SiteFooter() {
         {/* Bottom copyright bar */}
         <div className="border-t border-rule flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between text-ink-faint font-mono text-xs">
           <p>© {site.copyrightYear} {site.name}</p>
-          <p>Dibangun dengan Next.js dan Tailwind CSS</p>
+          <p>{t.footer.copyright}</p>
         </div>
       </Container>
     </footer>

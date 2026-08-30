@@ -398,3 +398,21 @@ html[data-theme="dark"] {
   z-index: 9999;
 }
 
+/* ---------------------------------------------------------------------------
+   HIDE DEFAULT OS CURSOR ON DESKTOP
+   --------------------------------------------------------------------------- */
+@media (pointer: fine) {
+  html.custom-cursor-active,
+  html.custom-cursor-active *,
+  html.custom-cursor-active a,
+  html.custom-cursor-active button,
+  html.custom-cursor-active input,
+  html.custom-cursor-active textarea,
+  html.custom-cursor-active select,
+  html.custom-cursor-active label,
+  html.custom-cursor-active summary,
+  html.custom-cursor-active [role="button"] {
+    cursor: none !important;
+  }
+}
+

@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client";
+
+import { useLanguage } from "@/components/language-provider";
 import { buttonStyles, ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { ArrowDown, ArrowUpRight, GitHubMark, MailIcon, VerifiedBadge } from "@/components/ui/icons";
@@ -8,13 +10,9 @@ import { ResumeButton } from "@/components/ui/resume-button";
 import { TrackedLink } from "@/components/ui/tracked-link";
 import { site } from "@/data/site";
 
-/**
- * Hero (PRD 10.1).
- *
- * Nama dan role sengaja diletakkan di elemen paling atas dan berukuran paling
- * besar, karena satu-satunya tugas hero meyakinkan pengunjung sebelum scroll.
- */
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden">
       <Container>
@@ -22,11 +20,9 @@ export function Hero() {
           <div className="min-w-0 lg:col-span-9">
             {/* Baris status: label + availability */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-              <span className="label">Portfolio · {site.role}</span>
+              <span className="label">{t.hero.badge}</span>
 
               <span className="border-rule-strong text-ink-soft inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[0.6875rem] tracking-[0.12em] uppercase">
-                {/* Titik status dibarengi teks, bukan berdiri sendiri, supaya
-                    maknanya tidak bergantung pada warna. */}
                 <span
                   aria-hidden="true"
                   className={
@@ -36,7 +32,7 @@ export function Hero() {
                   }
                 />
                 {site.availability.available
-                  ? site.availability.label
+                  ? t.site.availabilityLabel
                   : "Not currently looking for opportunities"}
               </span>
             </div>
@@ -51,25 +47,25 @@ export function Hero() {
               </span>
               <span className="text-ink-soft block">
                 <span aria-hidden="true">— </span>
-                {site.role}
+                {t.site.role}
               </span>
             </h1>
 
             <p className="text-ink-soft mt-8 max-w-2xl text-lg sm:text-xl">
-              {site.tagline}
+              {t.site.tagline}
             </p>
 
-            {/* CTA. Primary lebih dulu di urutan DOM sekaligus di urutan tab. */}
+            {/* CTA */}
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Magnetic>
                 <ButtonLink href="#work" variant="primary">
-                  View Selected Work
+                  {t.hero.viewWork}
                   <ArrowDown />
                 </ButtonLink>
               </Magnetic>
 
               <Magnetic>
-                <ResumeButton variant="secondary" label="View Resume" />
+                <ResumeButton variant="secondary" label={t.hero.viewResume} />
               </Magnetic>
 
               <Magnetic>
@@ -80,7 +76,7 @@ export function Hero() {
                   className={buttonStyles("secondary")}
                 >
                   <GitHubMark />
-                  GitHub
+                  {t.hero.github}
                   <ArrowUpRight />
                 </TrackedLink>
               </Magnetic>
@@ -92,7 +88,7 @@ export function Hero() {
                   className={buttonStyles("secondary")}
                 >
                   <MailIcon />
-                  Contact Me
+                  {t.hero.contactMe}
                 </TrackedLink>
               </Magnetic>
             </div>
@@ -100,16 +96,16 @@ export function Hero() {
             {/* Meta baris bawah */}
             <dl className="border-rule mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 border-t pt-8 sm:grid-cols-3">
               <div>
-                <dt className="label">Location</dt>
-                <dd className="mt-2 text-sm">{site.location}</dd>
+                <dt className="label">{t.hero.locationLabel}</dt>
+                <dd className="mt-2 text-sm">{t.site.location}</dd>
               </div>
               <div>
-                <dt className="label">Preference</dt>
-                <dd className="mt-2 text-sm">{site.workPreference}</dd>
+                <dt className="label">{t.hero.preferenceLabel}</dt>
+                <dd className="mt-2 text-sm">{t.site.workPreference}</dd>
               </div>
               <div>
-                <dt className="label">Status</dt>
-                <dd className="mt-2 text-sm">{site.availability.detail}</dd>
+                <dt className="label">{t.hero.statusLabel}</dt>
+                <dd className="mt-2 text-sm">{t.site.availabilityDetail}</dd>
               </div>
             </dl>
           </div>

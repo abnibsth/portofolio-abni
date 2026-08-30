@@ -8,7 +8,7 @@ import type { SkillGroup } from "@/types";
 export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend",
-    note: "Nyaman membangun UI dari nol maupun dengan framework — fokus pada hasil yang rapi, responsif, dan performan.",
+    note: "Crafting clean, responsive, and high-performance UI from scratch and modern frameworks.",
     items: [
       { name: "HTML5", core: true },
       { name: "CSS3", core: true },
@@ -23,7 +23,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Backend",
-    note: "Punya pengalaman produksi di ekosistem PHP maupun Node.js — terbiasa membangun API dan sistem server-side dari nol.",
+    note: "Production experience across PHP and Node.js ecosystems—building REST APIs and server-side architectures.",
     items: [
       { name: "PHP", core: true },
       { name: "Laravel", core: true },
@@ -35,7 +35,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Database & Cloud",
-    note: "Punya pengalaman merancang skema relasional, query kompleks, serta integrasi layanan cloud/BaaS.",
+    note: "Designing relational schemas, complex queries, and integrating cloud BaaS solutions.",
     items: [
       { name: "MySQL", core: true },
       { name: "PostgreSQL" },
@@ -46,7 +46,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Mobile",
-    note: "Membangun aplikasi mobile cross-platform dan native.",
+    note: "Building cross-platform and native mobile applications.",
     items: [
       { name: "Flutter" },
       { name: "Dart" },
@@ -55,7 +55,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Tools & Ecosystem",
-    note: "Alat sehari-hari untuk versioning, pengujian API, lingkungan pengembangan, deployment, dan otomatisasi.",
+    note: "Daily toolkit for version control, API testing, dev environments, deployment, and workflow automation.",
     items: [
       { name: "Git", core: true },
       { name: "GitHub", core: true },

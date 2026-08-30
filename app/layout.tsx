@@ -68,6 +68,8 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
+import { AnimatedCursor } from "@/components/ui/animated-cursor";
+import { LanguageProvider } from "@/components/language-provider";
 import { ScrollRevealProvider } from "@/components/scroll-reveal-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -93,25 +95,28 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-dvh flex-col bg-paper text-ink transition-colors duration-200">
         <ThemeProvider defaultTheme="light" attribute="class">
-          <ScrollRevealProvider>
-            {/* Skip link */}
-            <a
-              href="#main"
-              className="focus:bg-ink focus:text-paper sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:px-5 focus:py-3 focus:text-sm"
-            >
-              Lompat ke konten utama
-            </a>
+          <LanguageProvider>
+            <AnimatedCursor />
+            <ScrollRevealProvider>
+              {/* Skip link */}
+              <a
+                href="#main"
+                className="focus:bg-ink focus:text-paper sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:px-5 focus:py-3 focus:text-sm"
+              >
+                Lompat ke konten utama
+              </a>
 
-            <SiteHeader />
+              <SiteHeader />
 
-            <main id="main" className="flex-1">
-              {children}
-            </main>
+              <main id="main" className="flex-1">
+                {children}
+              </main>
 
-            <SiteFooter />
+              <SiteFooter />
 
-            <Analytics />
-          </ScrollRevealProvider>
+              <Analytics />
+            </ScrollRevealProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

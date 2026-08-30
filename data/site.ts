@@ -74,7 +74,7 @@ export const site = {
      */
     isAvailable: true,
     /** [GANTI] Bulan/tahun terakhir resume diperbarui. */
-    updatedAt: "Agustus 2026",
+    updatedAt: "August 2026",
   },
 
   /* --- SEO ---------------------------------------------------------------- */
@@ -88,10 +88,10 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://abnibasit.vercel.app",
 
   /** Judul default. Halaman lain menambahkan prefix sendiri. */
-  title: "Abni Basit — Portfolio Full-Stack Web Developer",
+  title: "Abni Basit — Full-Stack Web Developer Portfolio",
 
   description:
-    "Portfolio full-stack web developer berisi proyek pilihan, studi kasus teknis, dan aktivitas GitHub terbaru.",
+    "Full-stack web developer portfolio featuring selected projects, technical case studies, and real-time GitHub activity.",
 
   keywords: [
     "Full-Stack Web Developer",
@@ -106,8 +106,8 @@ export const site = {
   ],
 
   /** Bahasa konten. Dipakai untuk atribut <html lang> dan Open Graph locale. */
-  locale: "id_ID",
-  lang: "id",
+  locale: "en_US",
+  lang: "en",
 
   /**
    * Tahun untuk copyright di footer. Sengaja konstanta, bukan `new Date()`:

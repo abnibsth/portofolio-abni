@@ -1,18 +1,29 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
+import { useLanguage } from "@/components/language-provider";
 import { MobileNav } from "@/components/navigation/mobile-nav";
 import { Container } from "@/components/ui/container";
 import { VerifiedBadge } from "@/components/ui/icons";
+import { LanguageToggle } from "@/components/ui/language-toggle";
 import { ResumeButton } from "@/components/ui/resume-button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { navItems } from "@/data/navigation";
 import { site } from "@/data/site";
 
-/**
- * Header sticky (PRD 11).
- */
 export function SiteHeader() {
+  const { t } = useLanguage();
+
+  const navItems = [
+    { label: t.nav.work, href: "/#work" },
+    { label: t.nav.about, href: "/#about" },
+    { label: t.nav.skills, href: "/#skills" },
+    { label: t.nav.experience, href: "/#experience" },
+    { label: t.nav.github, href: "/#github" },
+    { label: t.nav.contact, href: "/#contact" },
+  ];
+
   return (
     <header className="border-rule bg-paper/85 sticky top-0 z-40 border-b backdrop-blur-md">
       <Container>
@@ -20,7 +31,7 @@ export function SiteHeader() {
           <Link
             href="/"
             className="font-sans text-xl font-bold tracking-tight flex items-center gap-2 group"
-            aria-label={`${site.name} — kembali ke halaman utama`}
+            aria-label={`${site.name} — ${t.nav.work}`}
           >
             <Image
               src="/images/abni-jousting1.png"
@@ -38,7 +49,7 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <nav aria-label="Navigasi utama" className="hidden lg:block">
+          <nav aria-label="Main Navigation" className="hidden lg:block">
             <ul className="flex items-center gap-7">
               {navItems.map((item) => (
                 <li key={item.href}>
@@ -54,6 +65,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <LanguageToggle />
             <ThemeToggle />
             <div className="hidden lg:block">
               <ResumeButton

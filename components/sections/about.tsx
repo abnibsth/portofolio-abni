@@ -1,17 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 import { Section } from "@/components/ui/section";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { StackedPhotoDeck } from "@/components/ui/stacked-photo-deck";
 import { about } from "@/data/about";
-import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
-/**
- * About & Tech Events Showcase dengan Paginasi 4 Event per Halaman (PRD 10.4).
- */
 export function About() {
+  const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState(1);
   const EVENTS_PER_PAGE = 4;
   const totalPages = Math.ceil(about.events.length / EVENTS_PER_PAGE);
@@ -21,20 +19,27 @@ export function About() {
     currentPage * EVENTS_PER_PAGE
   );
 
+  const paragraphs = [t.about.p1, t.about.p2, t.about.p3];
+  const highlights = [
+    t.about.highlights.h1,
+    t.about.highlights.h2,
+    t.about.highlights.h3,
+    t.about.highlights.h4,
+  ];
+
   return (
     <>
-      {/* 1. Section Tentang Saya */}
       <Section
         id="about"
         index="02"
-        label="Tentang Saya"
-        title="Pengalaman & Pembelajaran"
-        intro={about.intro}
+        label={t.about.label}
+        title={t.about.heading}
+        intro={t.about.intro}
       >
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-x-12">
           <div className="reveal space-y-5 lg:col-span-3">
-            {about.paragraphs.map((paragraph) => (
-              <p key={paragraph.slice(0, 40)} className="text-ink-soft leading-relaxed">
+            {paragraphs.map((paragraph, idx) => (
+              <p key={idx} className="text-ink-soft leading-relaxed">
                 {paragraph}
               </p>
             ))}
@@ -42,7 +47,7 @@ export function About() {
 
           <div className="reveal lg:col-span-2">
             <dl className="divide-rule border-rule divide-y border-t">
-              {about.highlights.map((item) => (
+              {highlights.map((item) => (
                 <div key={item.label} className="py-4 sm:py-5">
                   <dt className="label">{item.label}</dt>
                   <dd className="mt-1.5">
@@ -56,25 +61,23 @@ export function About() {
             </dl>
 
             <p className="text-ink-faint mt-6 font-mono text-xs">
-              {site.location} · {site.workPreference}
+              {t.site.location} · {t.site.workPreference}
             </p>
           </div>
         </div>
       </Section>
 
-      {/* 2. Section Dokumentasi Event Teknologi (Pojok Kiri Aligned + Paginasi 4 Card) */}
       <Section
         id="events"
         index="03"
-        label="Dokumentasi Event"
-        title="Keaktifan di Event & Conference Teknologi"
-        intro="Meningkatkan keterampilan rekayasa perangkat lunak melalui kehadiran di berbagai tech summit, workshop AI, dan meetup developer. Klik tumpukan foto untuk melihat foto selanjutnya."
+        label={t.about.eventsLabel}
+        title={t.about.eventsHeading}
+        intro={t.about.eventsIntro}
       >
         <div key={currentPage} className="event-page-transition grid grid-cols-1 sm:grid-cols-2 gap-8">
           {displayedEvents.map((event) => (
             <SpotlightCard key={event.title}>
               <div>
-                {/* Category Pill Tag & Location */}
                 <div className="flex items-center justify-between gap-2 mb-5">
                   <span className="rounded-full bg-surface px-3 py-1 font-mono text-[0.6875rem] font-medium uppercase tracking-wider text-ink border border-rule">
                     {event.category}
@@ -84,7 +87,6 @@ export function About() {
                   </span>
                 </div>
 
-                {/* Prominent Large Interactive Stacked Photo Deck */}
                 <div className="mb-6">
                   <StackedPhotoDeck
                     images={event.images}
@@ -105,7 +107,6 @@ export function About() {
           ))}
         </div>
 
-        {/* Paginasi Kontrol (4 Event per Halaman) */}
         {totalPages > 1 ? (
           <div className="mt-10 flex items-center justify-center gap-2">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -118,7 +119,7 @@ export function About() {
                     ? "bg-ink text-paper border-ink shadow-md"
                     : "bg-paper text-ink-soft border-rule hover:border-ink hover:text-ink"
                 )}
-                aria-label={`Ke halaman ${page}`}
+                aria-label={`Page ${page}`}
               >
                 {page}
               </button>
@@ -134,7 +135,7 @@ export function About() {
                   : "bg-paper text-ink-soft border-rule hover:border-ink hover:text-ink cursor-pointer"
               )}
             >
-              Next <span aria-hidden="true">›</span>
+              {t.about.next} <span aria-hidden="true">›</span>
             </button>
           </div>
         ) : null}

@@ -27,9 +27,10 @@ export function ThemeToggle({ className }: { className?: string }) {
       return;
     }
 
-    // 2. Ambil koordinat kursor klik
-    const x = e.clientX;
-    const y = e.clientY;
+    // 2. Hitung titik pusat geometris persis dari tombol ThemeToggle (Sun/Moon icon center)
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
 
     // 3. Hitung radius lingkaran maksimal untuk menutupi seluruh layar
     const endRadius = Math.hypot(
@@ -37,7 +38,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       Math.max(y, window.innerHeight - y)
     );
 
-    // 4. Eksekusi View Transition dengan circular clip-path animation (Ripple Effect)
+    // 4. Eksekusi View Transition dengan circular clip-path animation (Material Ripple Effect)
     const transition = document.startViewTransition(() => {
       setTheme(nextTheme);
     });
@@ -51,8 +52,8 @@ export function ThemeToggle({ className }: { className?: string }) {
           ],
         },
         {
-          duration: 500,
-          easing: "ease-in-out",
+          duration: 550,
+          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
           pseudoElement: "::view-transition-new(root)",
         }
       );

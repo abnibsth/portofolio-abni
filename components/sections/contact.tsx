@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/components/language-provider";
 import { AbstractHatch } from "@/components/ui/abstract-mark";
 import { buttonStyles } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -7,10 +10,9 @@ import { TrackedLink } from "@/components/ui/tracked-link";
 import { site } from "@/data/site";
 import { socialLinks } from "@/data/social-links";
 
-/**
- * Contact (PRD 10.8) — Tema Terang (Light Paper Theme).
- */
 export function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -23,17 +25,15 @@ export function Contact() {
         <div className="grid gap-y-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-x-12">
           <div className="min-w-0 lg:col-span-7">
             <span className="text-ink-soft font-mono text-[0.6875rem] tracking-[0.16em] uppercase">
-              Kontak
+              {t.contact.label}
             </span>
 
             <h2 id="contact-heading" className="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink">
-              Ada posisi, proyek, atau kolaborasi? Mari bicara.
+              {t.contact.heading}
             </h2>
 
             <p className="text-ink-soft mt-6 max-w-xl">
-              Cara paling cepat adalah lewat email — biasanya saya balas dalam satu hari
-              kerja. Kalau ingin melihat riwayat kerja lebih dulu, LinkedIn dan CV ada
-              di sebelah.
+              {t.contact.intro}
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -48,20 +48,20 @@ export function Contact() {
 
               <ResumeButton
                 variant="secondary"
-                label="Unduh CV"
+                label={t.contact.downloadCv}
               />
             </div>
 
             {site.resume.isAvailable ? (
               <p className="text-ink-faint mt-4 font-mono text-xs">
-                CV diperbarui {site.resume.updatedAt} · PDF
+                {t.contact.cvUpdated} {t.site.resumeUpdatedAt} · PDF
               </p>
             ) : null}
           </div>
 
           <div className="min-w-0 lg:col-span-5 lg:pl-6">
             <span className="text-ink-soft font-mono text-[0.6875rem] tracking-[0.16em] uppercase">
-              Semua tautan
+              {t.contact.allLinks}
             </span>
 
             <ul className="divide-rule border-rule mt-5 divide-y border-t">

@@ -1,29 +1,32 @@
+"use client";
+
+import { useLanguage } from "@/components/language-provider";
 import { Marquee } from "@/components/ui/marquee";
 import { Section } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
 import { skillGroups } from "@/data/skills";
 
-/**
- * Skills (PRD 10.5).
- *
- * Tanpa progress bar dan tanpa persentase — keduanya angka subjektif yang tidak
- * bisa diverifikasi dan justru menurunkan kredibilitas.
- *
- * Perbedaan skill inti dan skill pendukung disampaikan dua kali: lewat gaya
- * visual (pil hitam solid) DAN lewat keterangan tekstual di legenda bawah,
- * supaya tetap terbaca oleh screen reader dan tidak bergantung pada warna.
- */
 export function Skills() {
+  const { t } = useLanguage();
+
+  const getGroupNote = (title: string, defaultNote: string) => {
+    const key = title.toLowerCase();
+    if (key.includes("frontend")) return t.skills.groups.frontend;
+    if (key.includes("backend")) return t.skills.groups.backend;
+    if (key.includes("database")) return t.skills.groups.database;
+    if (key.includes("mobile")) return t.skills.groups.mobile;
+    if (key.includes("tools")) return t.skills.groups.tools;
+    return defaultNote;
+  };
+
   return (
     <Section
       id="skills"
-      index="03"
-      label="Keahlian"
-      title="Yang saya pakai untuk membangun"
-      intro="Hanya teknologi yang benar-benar pernah saya pakai di proyek nyata, bukan yang baru saya tonton di tutorial."
+      index="04"
+      label={t.skills.label}
+      title={t.skills.heading}
+      intro={t.skills.intro}
     >
-      {/* Ticker tech stack: dua baris jalan berlawanan arah, seperti kereta.
-          Murni dekoratif — detail lengkapnya tetap di grid bawah. */}
       <div className="border-rule mb-12 space-y-3 border-y py-6">
         <Marquee
           items={skillGroups.flatMap((g) =>
@@ -44,7 +47,9 @@ export function Skills() {
         {skillGroups.map((group) => (
           <div key={group.title} className="reveal border-rule border-t pt-6">
             <h3 className="font-display text-2xl">{group.title}</h3>
-            <p className="text-ink-soft mt-2 text-sm">{group.note}</p>
+            <p className="text-ink-soft mt-2 text-sm">
+              {getGroupNote(group.title, group.note)}
+            </p>
 
             <ul className="mt-5 flex flex-wrap gap-2">
               {group.items.map((skill) => (
@@ -52,7 +57,7 @@ export function Skills() {
                   <Tag emphasis={skill.core}>
                     {skill.name}
                     {skill.core ? (
-                      <span className="sr-only"> (keahlian inti)</span>
+                      <span className="sr-only"> (core skill)</span>
                     ) : null}
                   </Tag>
                 </li>
@@ -63,8 +68,8 @@ export function Skills() {
       </div>
 
       <p className="border-rule text-ink-faint mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 border-t pt-6 font-mono text-xs">
-        <Tag emphasis>Contoh</Tag>
-        <span>= keahlian inti, siap dibahas mendalam saat interview.</span>
+        <Tag emphasis>{t.skills.example}</Tag>
+        <span>{t.skills.legend}</span>
       </p>
     </Section>
   );

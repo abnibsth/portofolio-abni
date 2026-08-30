@@ -7,13 +7,13 @@
 export const about = {
   /** Ringkasan satu baris yang tampil sebagai intro di kolom kiri. */
   intro:
-    "Latar belakang singkat, antusiasme pada komunitas developer, serta kegiatan menghadiri event & konferensi teknologi.",
+    "Brief background, developer community engagement, and tech conference & workshop documentation.",
 
   /** Paragraf utama. Tiap string = satu paragraf. */
   paragraphs: [
-    "Saya adalah seorang Full-Stack Web Developer yang tidak hanya aktif menulis kode, tetapi juga bersemangat untuk terus berkembang lewat komunitas dan event teknologi.",
-    "Saya rutin mengikuti berbagai tech conference, seminar, dan workshop pengembang—seperti Qwen x buildclub.ai Summit, OpenClaw Meetup JKT #1, TiDB x Buildclub.ai Meetup, mem9 Build Night, Build with TRAE @Jakarta, dan Claude Indonesia Community Launch—untuk memperluas wawasan mengenai AI, arsitektur data terdistribusi, performa web modern, dan tren rekayasa perangkat lunak terbaru.",
-    "Bagi saya, menghadiri event teknologi adalah cara terbaik untuk berdiskusi dengan praktisi industri, bertukar pikiran tentang problem-solving, serta menyerap praktik terbaik yang langsung saya terapkan pada proyek-proyek yang saya bangun.",
+    "I am a Full-Stack Web Developer who not only loves crafting clean code, but is also passionate about continuous learning through tech communities and developer summits.",
+    "I actively attend various tech conferences, seminars, and developer workshops—such as Qwen x buildclub.ai Summit, OpenClaw Meetup JKT #1, TiDB x Buildclub.ai Meetup, mem9 Build Night, Build with TRAE @Jakarta, and Claude Indonesia Community Launch—to stay at the forefront of AI, distributed data architecture, modern web performance, and software engineering best practices.",
+    "For me, attending tech events is the best way to connect with industry practitioners, exchange ideas on problem-solving, and absorb best practices that I directly apply to production-grade applications.",
   ],
 
   /** Foto & dokumentasi event teknologi */
@@ -28,7 +28,7 @@ export const about = {
         "/images/events/qwen/qwen3.png",
         "/images/events/qwen/qwen4.png",
       ],
-      caption: "Workshop penjelajahan dan integrasi model Qwen 2.5 bersama komunitas buildclub.ai.",
+      caption: "Exploration & integration workshop on Qwen 2.5 models with the buildclub.ai community.",
     },
     {
       title: "OpenClaw Meetup JKT #1 🦞",
@@ -41,7 +41,7 @@ export const about = {
         "/images/events/openclaw1/openclaw3.png",
         "/images/events/openclaw1/openclaw4.png",
       ],
-      caption: "Dokumentasi & sesi meetup pengembang OpenClaw Meetup JKT #1 di Jakarta.",
+      caption: "Developer meetup and networking session at OpenClaw Meetup JKT #1 in Jakarta.",
     },
     {
       title: "TiDB x Buildclub.ai Meetup : Mastering Best Practices in Data & AI",
@@ -55,7 +55,7 @@ export const about = {
         "/images/events/TIDB/tidb5.png",
         "/images/events/TIDB/tidb6.png",
       ],
-      caption: "Meetup pembelajaran praktik terbaik arsitektur data terdistribusi TiDB & integrasi AI bersama Buildclub.ai.",
+      caption: "Learning best practices in TiDB distributed database architecture & AI integration with Buildclub.ai.",
     },
     {
       title: "Give Your AI a Forever Memory: mem9 Setup & Build Night",
@@ -67,7 +67,7 @@ export const about = {
         "/images/events/mem9/mem3.png",
         "/images/events/mem9/mem4.png",
       ],
-      caption: "Sesi hands-on setup dan eksplorasi memori AI jangka panjang pada event mem9 Setup & Build Night.",
+      caption: "Hands-on setup session exploring long-term AI memory architectures during mem9 Build Night.",
     },
     {
       title: "Build with TRAE @Jakarta",
@@ -79,7 +79,7 @@ export const about = {
         "/images/events/trae/trae3.png",
         "/images/events/trae/trae4.png",
       ],
-      caption: "Sesi workshop dan eksplorasi fitur rekayasa perangkat lunak bertenaga AI pada event Build with TRAE @Jakarta.",
+      caption: "Workshop exploring AI-assisted software engineering features at Build with TRAE @Jakarta.",
     },
     {
       title: "Indonesia AI Community x Claude Indonesia Community: LAUNCH + AI Workshop",
@@ -94,31 +94,31 @@ export const about = {
         "/images/events/claude/claude6.png",
         "/images/events/claude/claude7.png",
       ],
-      caption: "Peluncuran resmi & workshop integrasi Claude AI bersama Indonesia AI Community dan Claude Indonesia Community.",
+      caption: "Official launch & Claude AI integration workshop with Indonesia AI Community and Claude Indonesia Community.",
     },
   ],
 
   /** Poin ringkas yang bisa dipindai cepat. */
   highlights: [
     {
-      label: "Fokus Utama",
+      label: "Core Focus",
       value: "Full-Stack Web Dev",
       detail: "Laravel, Next.js, React, TypeScript, PHP & MySQL.",
     },
     {
-      label: "Komunitas & Event",
-      value: "Tech Events & Summit",
-      detail: "Rutin menghadiri konferensi & workshop AI / Web.",
+      label: "Community & Events",
+      value: "Tech Summits & Meetups",
+      detail: "Regular attendee at AI & web developer conferences.",
     },
     {
-      label: "Prinsip Kerja",
-      value: "Kode Bersih & Performa",
-      detail: "Struktur arsitektur modular dan UI/UX presisi.",
+      label: "Engineering Standards",
+      value: "Clean Code & Performance",
+      detail: "Modular system design and precision UI/UX.",
     },
     {
-      label: "Status Ketersediaan",
-      value: "Peran Full-Time",
-      detail: "Terbuka untuk posisi On-site / Hybrid di Jakarta.",
+      label: "Availability",
+      value: "Full-Time Roles",
+      detail: "Open for On-site / Hybrid positions in Jakarta.",
     },
   ],
 };

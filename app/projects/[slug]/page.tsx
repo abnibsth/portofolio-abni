@@ -32,7 +32,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
-  if (!project) return buildMetadata({ title: "Project tidak ditemukan" });
+  if (!project) return buildMetadata({ title: "Project not found" });
 
   return buildMetadata({
     title: project.title,
@@ -50,8 +50,6 @@ export default async function ProjectDetailPage({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
-  // Slug yang tidak dikenal berakhir di app/not-found.tsx, bukan di halaman
-  // kosong atau error runtime.
   if (!project) notFound();
 
   const { next } = getAdjacentProjects(project.slug);
@@ -83,14 +81,14 @@ export default async function ProjectDetailPage({
               className="link-underline text-ink-soft hover:text-ink inline-flex items-center gap-1.5 transition-colors"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
-              Beranda
+              Home
             </Link>
             <span className="text-ink-faint font-mono text-xs">/</span>
             <Link
               href="/projects"
               className="link-underline text-ink-soft hover:text-ink inline-flex items-center gap-1.5 transition-colors"
             >
-              Semua project
+              All Projects
             </Link>
           </div>
 
@@ -116,9 +114,9 @@ export default async function ProjectDetailPage({
                     external
                     className="link-underline inline-flex items-center gap-1.5 text-sm font-medium"
                   >
-                    Lihat demo langsung
+                    Live Demo
                     <ArrowUpRight className="h-3.5 w-3.5" />
-                    <span className="sr-only">(terbuka di tab baru)</span>
+                    <span className="sr-only">(opens in new tab)</span>
                   </TrackedLink>
                 ) : null}
 
@@ -133,21 +131,19 @@ export default async function ProjectDetailPage({
                     <GitHubMark className="h-3.5 w-3.5" />
                     Repository
                     <ArrowUpRight className="h-3.5 w-3.5" />
-                    <span className="sr-only">(terbuka di tab baru)</span>
+                    <span className="sr-only">(opens in new tab)</span>
                   </TrackedLink>
                 ) : null}
               </div>
             </div>
 
-            {/* Project Overview — semua fakta ringkas dikumpulkan di satu tempat
-                supaya hiring manager tidak perlu memindai seluruh artikel. */}
             <dl className="divide-rule border-rule divide-y border-t min-w-0 lg:col-span-4 lg:border-t-0">
               <div className="grid grid-cols-[7rem_1fr] gap-4 py-3.5">
-                <dt className="label">Peran</dt>
+                <dt className="label">Role</dt>
                 <dd className="text-ink-soft text-sm">{project.role}</dd>
               </div>
               <div className="grid grid-cols-[7rem_1fr] gap-4 py-3.5">
-                <dt className="label">Waktu</dt>
+                <dt className="label">Timeline</dt>
                 <dd className="text-ink-soft text-sm">{project.timeline}</dd>
               </div>
               <div className="grid grid-cols-[7rem_1fr] gap-4 py-3.5">
@@ -177,36 +173,32 @@ export default async function ProjectDetailPage({
             </div>
           </div>
 
-          {/* ---------- Studi kasus ----------
-              Urutan sengaja menaruh Hasil sebelum Keputusan Teknis dan Tantangan.
-              PRD 10.3 meminta "informasi penting muncul sebelum bagian teknis
-              yang panjang", dan bagi recruiter non-teknis hasil jauh lebih
-              berarti daripada alasan pemilihan framework. */}
+          {/* ---------- Case Study ---------- */}
           <div className="mt-16">
-            <CaseStudyBlock index="01" title="Konteks">
+            <CaseStudyBlock index="01" title="Context">
               <Paragraphs items={project.context} />
             </CaseStudyBlock>
 
-            <CaseStudyBlock index="02" title="Masalah">
+            <CaseStudyBlock index="02" title="Problem">
               <Paragraphs items={project.problem} />
             </CaseStudyBlock>
 
-            <CaseStudyBlock index="03" title="Solusi">
+            <CaseStudyBlock index="03" title="Solution">
               <Paragraphs items={project.solution} />
             </CaseStudyBlock>
 
-            <CaseStudyBlock index="04" title="Kontribusi saya">
+            <CaseStudyBlock index="04" title="My Contribution">
               <Paragraphs items={project.contribution} />
             </CaseStudyBlock>
 
             {project.results.length > 0 ? (
-              <CaseStudyBlock index="05" title="Hasil">
+              <CaseStudyBlock index="05" title="Results & Impact">
                 <DashList items={project.results} />
               </CaseStudyBlock>
             ) : null}
 
             {project.technicalDecisions.length > 0 ? (
-              <CaseStudyBlock index="06" title="Keputusan teknis">
+              <CaseStudyBlock index="06" title="Technical Decisions">
                 <div className="space-y-9">
                   {project.technicalDecisions.map((decision) => (
                     <div key={decision.heading}>
@@ -221,7 +213,7 @@ export default async function ProjectDetailPage({
             ) : null}
 
             {project.challenges.length > 0 ? (
-              <CaseStudyBlock index="07" title="Tantangan">
+              <CaseStudyBlock index="07" title="Challenges & Learnings">
                 <div className="space-y-9">
                   {project.challenges.map((challenge) => (
                     <div key={challenge.heading}>
@@ -236,7 +228,7 @@ export default async function ProjectDetailPage({
             ) : null}
 
             {project.gallery.length > 0 ? (
-              <CaseStudyBlock index="08" title="Tampilan">
+              <CaseStudyBlock index="08" title="Visual Showcase">
                 <div className="space-y-10">
                   {project.gallery.map((image) => (
                     <figure key={image.src}>
@@ -264,17 +256,28 @@ export default async function ProjectDetailPage({
         </Container>
       </article>
 
-      {/* ---------- Navigasi project berikutnya ---------- */}
+      {/* ---------- Next Project Navigation ---------- */}
       {next && next.slug !== project.slug ? (
         <nav
-          aria-label="Project berikutnya"
+          aria-label="Next Project Navigation"
           className="border-rule bg-ink text-paper border-t"
         >
           <Container>
             <Link href={`/projects/${next.slug}`} className="group block py-16">
               <span className="text-paper/60 font-mono text-[0.6875rem] tracking-[0.16em] uppercase">
-                Project berikutnya
+                Next Project
               </span>
+              <span className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <span className="font-display text-4xl sm:text-5xl lg:text-6xl">
+                  {next.title}
+                </span>
+                <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" />
+              </span>
+              <span className="text-paper/70 mt-4 block max-w-xl">{next.summary}</span>
+            </Link>
+          </Container>
+        </nav>
+      ) : null}
               <span className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <span className="font-display text-4xl sm:text-5xl lg:text-6xl">
                   {next.title}
