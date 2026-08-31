@@ -416,3 +416,19 @@ html[data-theme="dark"] {
   }
 }
 
+/* ---------------------------------------------------------------------------
+   HIDE BROWSER DEFAULT SCROLLBAR (Scroll Functionality Remains 100% Active)
+   --------------------------------------------------------------------------- */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera, Edge */
+  width: 0;
+  height: 0;
+}
+
+
