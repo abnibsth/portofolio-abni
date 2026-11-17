@@ -18,24 +18,8 @@ export function Hero() {
       <Container>
         <div className="grid items-start gap-y-12 pt-14 pb-20 sm:pt-20 lg:grid-cols-12 lg:gap-x-12 lg:pb-28">
           <div className="min-w-0 lg:col-span-9">
-            {/* Baris status: label + availability */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-              <span className="label">{t.hero.badge}</span>
-
-              <span className="border-rule-strong text-ink-soft inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[0.6875rem] tracking-[0.12em] uppercase">
-                <span
-                  aria-hidden="true"
-                  className={
-                    site.availability.available
-                      ? "bg-ink h-1.5 w-1.5 rounded-full"
-                      : "border-ink-faint h-1.5 w-1.5 rounded-full border"
-                  }
-                />
-                {site.availability.available
-                  ? t.site.availabilityLabel
-                  : "Not currently looking for opportunities"}
-              </span>
-            </div>
+            {/* Label */}
+            <span className="label block">{t.hero.badge}</span>
 
             <h1
               id="hero-heading"

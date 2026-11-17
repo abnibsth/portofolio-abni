@@ -85,7 +85,7 @@ export const site = {
    * Di Vercel, set environment variable NEXT_PUBLIC_SITE_URL supaya nilai ini
    * ikut berubah tanpa mengedit kode.
    */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://abnibasit.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.abnibasit.me",
 
   /** Judul default. Halaman lain menambahkan prefix sendiri. */
   title: "Abni Basit — Full-Stack Web Developer Portfolio",

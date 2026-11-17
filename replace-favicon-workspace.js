@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const src = path.join(__dirname, 'public/images/abni-jousting1.png');
+const src = path.join(__dirname, 'public/images/abni-photo.jpg');
 const appFavicon = path.join(__dirname, 'app/favicon.ico');
 const appIconPng = path.join(__dirname, 'app/icon.png');
 const publicFavicon = path.join(__dirname, 'public/favicon.ico');
@@ -13,7 +13,7 @@ if (fs.existsSync(src)) {
   fs.writeFileSync(appFavicon, fileBuffer);
   fs.writeFileSync(appIconPng, fileBuffer);
   fs.writeFileSync(publicFavicon, fileBuffer);
-  console.log('Successfully replaced all favicon.ico and icon.png files with abni-jousting1.png!');
+  console.log('Successfully replaced all favicon.ico and icon.png files with abni-photo.jpg!');
 } else {
   console.error('Source image does not exist:', src);
 }

@@ -46,9 +46,9 @@ export const metadata: Metadata = {
     google: "D7SKv9LxuJjfhYWoG7O18GGzx0rMK5RFwsaL6gi4eds",
   },
   icons: {
-    icon: "/images/abni-jousting1.png",
-    shortcut: "/images/abni-jousting1.png",
-    apple: "/images/abni-jousting1.png",
+    icon: "/images/abni-photo.jpg",
+    shortcut: "/images/abni-photo.jpg",
+    apple: "/images/abni-photo.jpg",
   },
   openGraph: {
     type: "website",
@@ -89,9 +89,9 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <head>
-        <link rel="icon" href="public/images/abni-jousting1.png" type="image/png" sizes="any" />
-        <link rel="shortcut icon" href="/images/abni-jousting1.png" />
-        <link rel="apple-touch-icon" href="/images/abni-jousting1.png" />
+        <link rel="icon" href="/images/abni-photo.jpg" type="image/jpeg" sizes="any" />
+        <link rel="shortcut icon" href="/images/abni-photo.jpg" type="image/jpeg" />
+        <link rel="apple-touch-icon" href="/images/abni-photo.jpg" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
